@@ -1,7 +1,6 @@
 var config = require('./dbconfig');
 const sql = require('mssql');
 
-console.log (config);
 async function getCourses() {
     try {
         let pool = await sql.connect(config);

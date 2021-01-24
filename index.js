@@ -3,12 +3,14 @@ const sql = require('mssql');
 const app = express ();
 var Db  = require('./dboperations');
 const dboperations = require('./dboperations');
-app.listen(3000,() =>console.log('listening at 3000'));
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Starting server at ${port}`);
+  });
 app.use (express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 
 app.post('/apis', (request, response)=>{ 
-    console.log(request.body);
     const data = request.body;
     dboperations.addOrder(data).then(result => {
        response.status(201).json(result);
@@ -19,7 +21,6 @@ app.get('/api-enviar-disponibilidaddb', (request, response)=>{
     console.log(request.body);
     dboperations.getCourses().then(result => {
         response.json(result[0]);
-        console.log(request.body);
      })
 })
 app.get('/api-enviar-buddydb', (request, response)=>{ 
