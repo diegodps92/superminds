@@ -2,8 +2,6 @@ const express = require ('express');
 const sql = require('mssql');
 const app = express ();
 var Db  = require('./dboperations');
-const appInsights = require('applicationinsights');
-appInsights.setup('88af4436-57fc-48fc-bf64-eb94b72e404f').start();
 const dboperations = require('./dboperations');
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
