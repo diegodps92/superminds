@@ -3,7 +3,7 @@ const sql = require('mssql');
 const app = express ();
 var Db  = require('./dboperations');
 const appInsights = require('applicationinsights');
-appInsights.setup('b4dc0dc9-0480-44b9-ba3e-3b2e13ab662e').start();
+appInsights.setup('88af4436-57fc-48fc-bf64-eb94b72e404f').start();
 const dboperations = require('./dboperations');
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
