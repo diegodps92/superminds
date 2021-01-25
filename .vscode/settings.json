@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/191ada02-0c34-4af9-97f7-74192cad9676/resourceGroups/supermidns/providers/Microsoft.Web/sites/superbuddy-ventas",
+    "appService.deploySubpath": "."
+}
