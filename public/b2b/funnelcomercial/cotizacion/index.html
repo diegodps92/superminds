@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <link  rel="stylesheet" href = "./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+
+    <div class = "container">
+     <div class = row >
+        <h2>Cotizaciones</h2>
+        <div class="input-field col s4 offset-s8">
+          <a href="./nuevacotizacion" class="btn waves-effect waves-light" >Nueva Cotización
+          <i class="material-icons right">add</i>
+          </a>
+        </div>
+        <div class="input-field col s4">
+            <i class="material-icons prefix">textsms</i>
+            <input type="text" id="CbusqEmp-input" class="autocomplete">
+            <label for="CbusqEmp-input">Nombre de Empresa</label>
+        </div>
+
+        <div class="input-field col s4">
+            <i class="material-icons prefix">textsms</i>
+            <input type="text" id="CbusqEmpRuc-input" class="autocomplete">
+            <label for="CbusqEmpRuc-input">RUC</label>
+        </div>
+        <div class="input-field col s4">
+        <button class="btn waves-effect waves-light" id="btn-buscar-emp">buscar
+            <i class="material-icons right">search</i>
+        </button>
+        </div>
+     </div>
+
+     <div class = row ></div>  
+     <div class = row >
+        <div class="mb-3">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Empresa</th>
+                  <th scope="col">#Niños</th>
+                  <th scope="col">#Horas</th>
+                  <th scope="col">Monto</th>
+                  <th scope="col">Costo</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id = "CEmpResults">
+              </tbody>
+            </table>
+            <template id = "CEmprowTemplate">
+                <tr class = "CEmpresult-box">
+                  <th class="class-CotID" scope ="row"></th>
+                  <th class="class-CEmpN"></th>
+                  <td class ="class-CEmpNumNin"></td>
+                  <td class ="class-CEmpMonto"></td>
+                  <td class ="class-CEmpCosto"></td>
+                  <td class ="class-CEmpEst"></td>
+                  <td><button type="button" class="btn btn-outline-dark">Edit</button></td>
+                </tr>
+            </template>
+          </div>
+     </div>  
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+
+    </script>
+  </body>
+</html>

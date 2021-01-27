@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+
+  <div class="container">
+      <h2>Ingresar Cotización</h2>
+    <div class = row >
+        <div class="input-field col s6">
+           <i class="material-icons prefix">textsms</i>
+           <input type="text" id="busqEmp-input" class="autocomplete">
+           <label for="busqEmp-input">Nombre de Empresa</label>
+        </div>      
+
+          <div class="input-field col s2">
+          </div>
+        <div class="input-field col s4">
+          <button class="btn waves-effect waves-light" id="btn-buscarcemp">buscar
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+    </div>
+
+    <div class = row >
+      <div class="input-field col s4">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="idRUCEmpC" type="text" class="validate"> 
+        <label class="active" for="idRUCEmpC">RUC</label>
+      </div>
+      
+      <div class="input-field col s4">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="idRubroEmpC" type="text" class="validate">
+        <label class="active" for="idRubroEmpC">Rubro</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="NomContactEmpC" type="text" class="validate">
+        <label for="NomContactEmpC">Nombres del Contacto</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">phone</i>
+        <input id="idtelEmpC" type="tel" class="validate">
+        <label for="idtelEmpC">Telefono del Contacto</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">child_care</i>
+        <input id="NumNinEmpC" type="number" min ="0" max = "1000000" class="validate">
+        <label for="NumNinEmpC">Numero de niños</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">hourglass_empty</i>
+        <input id="NumHorEmpC" type="number" min ="0" max = "1000000" class="validate">
+        <label for="NumHorEmpC">Número de horas</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="CosBudEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate">
+        <label for="CosBudEmpC">S/. Costo de horas por Buddy</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">personal_video</i>
+        <input id="NumZoomEmpC" type="number" min ="0" max = "100000" class="validate">
+        <label for="NumZoomEmpC">Número de Salas Zoom</label>
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="CosZoomEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate">
+        <label for="CosZoomEmpC">S/. Costo por Sala Zoom</label>
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">personal_video</i>
+        <input id="NumKydemiEmpC" type="number" min ="0" max = "100000"  class="validate">
+        <label for="NumKydemiEmpC">Número de Licencias Kydemi</label>
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="CosKydemiEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate">
+        <label for="CosKydemiEmpC">S/. Costo por Licencia</label>
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">person_add</i>
+        <input id="NumModEmpC" type="number" min ="0" max = "1000000" class="validate">
+        <label for="NumModEmpC">Número de Moderadores</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="CosModEmpC" type="number" min ="0" max = "1000000"  step="0.01" class="validate">
+        <label for="CosModEmpC">S/. Costo por Moderador</label>
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="otroCosEmpC" type="number" min ="0" max = "10000" step="0.01" class="validate">
+        <label for="otroCosEmpC">Otros Costos</label>
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">perm_contact_calendar</i>
+        <input id= "DateBegEmpC" placeholder="Fecha de Inicio Propuesta" type="text" class="datepicker">
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">perm_contact_calendar</i>
+        <input id= "DateEndEmpC" placeholder="Fecha de Fin Propuesta" type="text" class="datepicker">
+      </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="idrentabilidadEmpC" type="number" min ="0" max = "1"  step="0.01" class="validate">
+        <label for="idrentabilidadEmpC">Rentabilidad</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="idmontoventaEmp" type="number" min ="0" max = "900000" step="0.01"  class="validate">
+        <label class="active" for="idmontoventaEmp">S/. Monto de Venta</label>
+      </div>
+      <div class="input-field col s3">
+        <a href="#!" class="collection-item"><span class="badge" id ="totalcostoCot">0</span>S/. Costo Total</a> 
+      </div>   
+      <div class="input-field col s3">
+        <a href="#!" class="collection-item"><span class="badge" id ="totalcostBudCot">0</span>S/. Costo Personal</a> 
+      </div>   
+      <div class="input-field col s3">
+        <a href="#!" class="collection-item"><span class="badge" id ="totalcostLiscCot">0</span>S/. Liscencias</a> 
+      </div>   
+      <div class="input-field col s3">
+        <a href="#!" class="collection-item"><span class="badge" id ="totalcostZoom">0</span>S/. Zoom</a> 
+      </div>  
+
+      <div class="input-field col s4">
+        <a href="/" class="btn waves-effect waves-light" >Regresar
+          <i class="material-icons right">send</i>
+        </a>
+     </div>
+     <div class="input-field col s4">
+      <button class="btn waves-effect waves-light" id="btn-precioSug">Precio sugerido
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+      <div class="input-field col s4">
+        <button class="btn waves-effect waves-light" id="btn-cotizar">Cotizar
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </div> <!--close-->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+       var arrayofEmpresas; 
+
+      async function  cotFirsStep (){
+      var fechas = document.querySelectorAll('.datepicker');
+      var fecpicker = M.Datepicker.init(fechas, {format: 'yyyy-mm-dd'});
+      const response = await fetch('/api-obt-empresas');
+      const data = await response.json();
+      arrayofEmpresas = data.filter(function(r){return true;});
+      const options = {};
+      const newarray = arrayofEmpresas.map(function(v){options[v['razonSocial']] = null ;});
+      var automcomplete = document.getElementById('busqEmp-input');
+      var instances = M.Autocomplete.init(automcomplete, {data: options});
+
+      }
+      document.getElementById("btn-precioSug").addEventListener("click", function(){
+        const numHour  =  Number(document.getElementById("NumHorEmpC").value);
+         const costperHourBuddy  =  Number(document.getElementById("CosBudEmpC").value);
+         const numZoom  =  Number(document.getElementById("NumZoomEmpC").value); 
+         const costZoom  =  Number(document.getElementById("CosZoomEmpC").value);
+         const numLiscKydemy  =  Number(document.getElementById("NumKydemiEmpC").value); 
+         const costKydemy  =  Number(document.getElementById("CosKydemiEmpC").value);
+         const numModerador  =  Number(document.getElementById("NumModEmpC").value);
+         const costPerModerador  =  Number(document.getElementById("CosModEmpC").value);
+         const otherCost  =  Number(document.getElementById("otroCosEmpC").value);
+        const costoBud = numHour * costperHourBuddy;
+         const  costoZoom = numZoom * costZoom;
+         const costoKydemi =  numLiscKydemy * costKydemy;
+         const costoModerador = numModerador * costPerModerador;
+         const totalCost  = costoBud + costoZoom + costoKydemi + costoModerador + Number(otherCost);
+         const percent = document.getElementById("idrentabilidadEmpC").value;
+          document.getElementById("idmontoventaEmp").value = totalCost + (percent + 1) * totalCost;
+          document.getElementById("totalcostoCot").textContent = totalCost;
+          document.getElementById("totalcostBudCot").textContent = costoModerador + costoBud;
+          document.getElementById("totalcostLiscCot").textContent = costoKydemi;
+          document.getElementById("totalcostZoom").textContent = costoZoom;
+      } )
+
+
+    
+        document.addEventListener('DOMContentLoaded', cotFirsStep());
+
+        document.getElementById("btn-buscarcemp").addEventListener("click",function(){
+         const filroEmp = document.getElementById('busqEmp-input').value;
+         const razonSocial = arrayofEmpresas.filter(r=> r['razonSocial'] === filroEmp).map(ele=>ele['entRUC']);
+         const sector = arrayofEmpresas.filter(r=> r['razonSocial'] === filroEmp).map(ele=>ele['sector']);
+         document.getElementById('idRUCEmpC').value = razonSocial[0];
+         document.getElementById('idRubroEmpC').value = sector[0];
+         
+
+        });
+            /*;*/
+        document.getElementById("btn-cotizar").addEventListener("click", async function()
+        {
+         const entRUC  =  document.getElementById("idRUCEmpC").value;
+         const dateQuote = '0' 
+         const entCompleteName  =  document.getElementById("busqEmp-input").value;
+         const idRubroEmpC =  document.getElementById("idRubroEmpC").value;
+         const entContact =  document.getElementById("NomContactEmpC").value;
+         const entTelContact =  Number(document.getElementById("idtelEmpC").value);
+         const quoteAmount  =  Number(document.getElementById("idmontoventaEmp").value);
+         const numChild  =  Number(document.getElementById("NumNinEmpC").value); 
+         const numHour  =  Number(document.getElementById("NumHorEmpC").value);
+         const costperHourBuddy  =  Number(document.getElementById("CosBudEmpC").value);
+         const numZoom  =  Number(document.getElementById("NumZoomEmpC").value); 
+         const costZoom  =  Number(document.getElementById("CosZoomEmpC").value);
+         const numLiscKydemy  =  Number(document.getElementById("NumKydemiEmpC").value); 
+         const costKydemy  =  Number(document.getElementById("CosKydemiEmpC").value);
+         const numModerador  =  Number(document.getElementById("NumModEmpC").value);
+         const costPerModerador  =  Number(document.getElementById("CosModEmpC").value);
+         const otherCost  =  Number(document.getElementById("otroCosEmpC").value);
+         const BeginigDate =  document.getElementById("DateBegEmpC").value;
+         const FinishDate =  document.getElementById("DateEndEmpC").value;
+         const IDdetail = 0
+         const costoBud = numHour * costperHourBuddy;
+         const  costoZoom = numZoom * costZoom;
+         const costoKydemi =  numLiscKydemy * costKydemy;
+         const costoModerador = numModerador * costPerModerador;
+         const totalCost  = costoBud + costoZoom + costoKydemi + costoModerador + Number(otherCost);
+         const data = {entRUC, 
+          dateQuote, 
+          entCompleteName,
+	        entContact,
+	        entTelContact,
+          quoteAmount,
+          numChild,
+          numHour,
+          costperHourBuddy, 
+          numZoom, 
+          costZoom,
+          numLiscKydemy, 
+          costKydemy, 
+          numModerador,
+          costPerModerador,
+          otherCost,
+          totalCost, 
+          BeginigDate,
+          FinishDate,
+          IDdetail}
+         const options = {
+         method: 'POST',
+         headers: {'Content-Type': 'application/json'},
+         body: JSON.stringify(data) };
+        const response = await  fetch('/api-nueva-cotizacion', options);
+        const json = await response.json();
+        });
+
+    </script>
+  </body>
+</html>

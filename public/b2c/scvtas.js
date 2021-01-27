@@ -18,7 +18,6 @@
                 const initialHour = r[7];
                 const surName = r[8];
                 const data = { currentdate, idlead,nom,curso,edad,availableday,buddyCompleteName,initialHour,surName};
-                console.log(data);
                 const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -67,7 +66,6 @@
 
     async function afterSidebarLoads1 ()  {
       //dropdownmonth();
-      console.log('diego');
       const response = await fetch('/api-enviar-disponibilidaddb');
       const data = await response.json();
       arrayOfValues = data.filter(function(r){return true;});

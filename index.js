@@ -1,7 +1,12 @@
 const express = require ('express');
 const sql = require('mssql');
+//const datastore = require ('nedb');
+
 const app = express ();
-var Db  = require('./dboperations');
+//var Db  = require('./dboperations');
+//const database = new Datastore ('database.db')
+//database.loadDatabase();
+//database.insert ({razonSocial:'GAZ ET L ENERGIE S.A.C.', RUC: '20522662462'})
 const dboperations = require('./dboperations');
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -34,6 +39,13 @@ app.get('/api-mes', (request, response)=>{
         response.json(result[0]);
      })
 })
+
+app.get('/api-obt-empresas', (request, response)=>{ 
+    dboperations.getEmpresas().then(result => {
+        response.json(result[0]);
+     })
+})
+
 app.post('/api-actualiza-stock', (request, response)=>{ 
     const datas = request.body;
     dboperations.updateStock(datas).then(result => {
@@ -44,6 +56,12 @@ app.post('/api-actualiza-stock', (request, response)=>{
 app.post('/api-consulta-stock', (request, response)=>{ 
     const data = request.body;
     dboperations.getStock(data).then(result => {
+       response.status(201).json(result);
+    })
+})
+app.post('/api-nueva-cotizacion', (request, response)=>{ 
+    const data = request.body;
+    dboperations.addQuote(data).then(result => {
        response.status(201).json(result);
     })
 })

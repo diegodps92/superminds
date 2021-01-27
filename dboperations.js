@@ -11,6 +11,8 @@ async function getCourses() {
         console.log(error);
     }
 }
+
+
 async function getBuddy() {
     try {
         let pool = await sql.connect(config);
@@ -22,6 +24,16 @@ async function getBuddy() {
     }
 }
 
+async function getEmpresas() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT razonSocial, entRUC, sector from enterprise.enterprisedetail");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
 
 async function getStock(data) {
     try {
@@ -66,6 +78,41 @@ async function addOrder(data) {
 
 }
 
+async function addQuote(data) {
+
+    try {
+        let pool = await sql.connect(config);
+        let insertProduct = await pool.request()
+            .input('dateQuote', sql.NVarChar, data.dateQuote)
+            .input('entRUC', sql.NVarChar, data.entRUC)
+            .input('entCompleteName', sql.NVarChar, data.entCompleteName)
+            .input('entContact', sql.NVarChar, data.entContact)
+            .input('entTelContact', sql.Int, data.entTelContact)
+            .input('quoteAmount', sql.Float, data.quoteAmount)
+            .input('numChild', sql.Int, data.numChild)
+            .input('numHour', sql.Float, data.numHour)
+            .input('costperHourBuddy', sql.Float, data.costperHourBuddy)
+            .input('numZoom', sql.Int, data.numZoom)
+            .input('costZoom', sql.Float, data.costZoom)
+            .input('numLiscKydemy', sql.Int, data.numLiscKydemy)
+            .input('costKydemy', sql.Float, data.costKydemy )
+            .input('numModerador', sql.Int, data.numModerador)
+            .input('costPerModerador', sql.Float, data.costPerModerador )
+            .input('otherCost', sql.Int, data.otherCost)
+            .input('totalCost', sql.Float, data.totalCost )
+            .input('BeginigDate', sql.NVarChar, data.BeginigDate)
+            .input('FinishDate', sql.NVarChar, data.FinishDate)
+            .input('IDdetail', sql.Int, data.IDdetail)
+            .execute('enterprise.insertRegistrocotizacion');
+        return insertProduct.recordsets;
+        
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+}
+
 async function updateStock(data) {
     try {
         let pool = await sql.connect(config);
@@ -102,5 +149,7 @@ module.exports = {
     getStock : getStock,
     addOrder : addOrder,
     updateStock: updateStock,
-    getMonth: getMonth
+    getMonth: getMonth,
+    getEmpresas: getEmpresas,
+    addQuote: addQuote
 }
