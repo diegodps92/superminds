@@ -19,3 +19,7 @@
     visibility: visible;
     animation: fadeInOut 3s;
 }
+
+.btn {
+    width: 200px
+}

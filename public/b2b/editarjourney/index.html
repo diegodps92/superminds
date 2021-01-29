@@ -10,7 +10,44 @@
   </head>
 
   <body>
+    <div class="navbar-fixed">
+      <nav class= "teal lighten-2" role="navigation" >
+          <div class="nav-wrapper container teal lighten-2">
+              <!-- Logo -->
+              <a href="#" class="brand-logo">Superminds</a>
+              <!-- Ícone para abrir no Mobile -->
+              <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                  <i class="material-icons">menu</i>
+              </a>
 
+              <ul id="navbar-items" class="right hide-on-med-and-down">
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="../">Regresar</a></li>
+                  <li><a href="./b2c">B2C</a></li>
+                  <li>
+                      <a class="dropdown-trigger" data-target="dropdown-menu" href="#">
+                          Funnel <i class="material-icons right">arrow_drop_down</i>
+                      </a>
+                  </li>
+              </ul>
+
+              <!-- Dropdown -->
+              <ul id="dropdown-menu" class="dropdown-content teal lighten-2">
+                  <li><a href="./b2b/cotizacion" class = "white-text">Cotización</a></li>
+                  <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+                  <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+
+  <!-- Menu Mobile -->
+  <ul id="mobile-navbar" class="sidenav teal lighten-2">
+      <li><a href="/" >Inicio</a></li>
+      <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+      <li><a href="./b2b/cotizacion"  class = "white-text" >Cotización</a></li>
+      <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+  </ul>
   <div class="container">
       <h2>Editar el Journey</h2>
     <div class = row >
