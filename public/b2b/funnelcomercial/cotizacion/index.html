@@ -11,19 +11,51 @@
   </head>
 
   <body>
+    <div class="navbar-fixed">
+        <nav class= "teal lighten-2" role="navigation" >
+            <div class="nav-wrapper container teal lighten-2">
+                <!-- Logo -->
+                <a href="#" class="brand-logo">Superminds</a>
+                <!-- Ícone para abrir no Mobile -->
+                <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
 
+                <ul id="navbar-items" class="right hide-on-med-and-down">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="../">Regresar</a></li>
+                    <li><a href="./b2c">B2C</a></li>
+                    <li>
+                        <a class="dropdown-trigger" data-target="dropdown-menu" href="#">
+                            Funnel <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Dropdown -->
+                <ul id="dropdown-menu" class="dropdown-content teal lighten-2">
+                    <li><a href="./b2b/cotizacion" class = "white-text">Cotización</a></li>
+                    <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+                    <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Menu Mobile -->
+    <ul id="mobile-navbar" class="sidenav teal lighten-2">
+        <li><a href="/" >Inicio</a></li>
+        <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+        <li><a href="./b2b/cotizacion"  class = "white-text" >Cotización</a></li>
+        <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+    </ul>
     <div class = "container">
      <div class = row >
-        <h2>Cotizaciones</h2>
+        <h4 class = "texto" >Cotizaciones</h4>
         <div class="input-field col s4 offset-s8">
-          <a href="./nuevacotizacion" class="btn waves-effect waves-light" >Nueva Cotización
+          <a href="./nuevacotizacion" class="btn waves-effect waves-light btnbuscar" >Nueva Cotización
           <i class="material-icons right">add</i>
           </a>
-        </div>
-        <div class="input-field col s4">
-            <i class="material-icons prefix">textsms</i>
-            <input type="text" id="CbusqEmp-input" class="autocomplete">
-            <label for="CbusqEmp-input">Nombre de Empresa</label>
         </div>
 
         <div class="input-field col s4">
@@ -32,7 +64,7 @@
             <label for="CbusqEmpRuc-input">RUC</label>
         </div>
         <div class="input-field col s4">
-        <button class="btn waves-effect waves-light" id="btn-buscar-emp">buscar
+        <button class="btn waves-effect waves-light btnbuscar" id="btn-buscar-emp">buscar
             <i class="material-icons right">search</i>
         </button>
         </div>
@@ -40,17 +72,18 @@
 
      <div class = row ></div>  
      <div class = row >
+     <div id ="app-table">
         <div class="mb-3">
             <table class="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
+                  <th scope="col">Fecha</th>
                   <th scope="col">Empresa</th>
                   <th scope="col">#Niños</th>
                   <th scope="col">#Horas</th>
                   <th scope="col">Monto</th>
                   <th scope="col">Costo</th>
-                  <th scope="col">Estado</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -60,20 +93,112 @@
             <template id = "CEmprowTemplate">
                 <tr class = "CEmpresult-box">
                   <th class="class-CotID" scope ="row"></th>
+                  <td class ="class-CEmpDate"></td>
                   <th class="class-CEmpN"></th>
                   <td class ="class-CEmpNumNin"></td>
+                  <td class ="class-CEmpNumHor"></td>
                   <td class ="class-CEmpMonto"></td>
                   <td class ="class-CEmpCosto"></td>
-                  <td class ="class-CEmpEst"></td>
-                  <td><button type="button" class="btn btn-outline-dark">Edit</button></td>
+                  <td><a href="#meu-modal" class="btn waves-effect waves-light modal-trigger edit-botton">Edit</a></td>
                 </tr>
             </template>
-          </div>
+          </div>  
+        </div>
      </div>  
+
+
+    <div id="meu-modal" class="modal"> <!-- bottom-sheet -->
+        <div class="modal-content">
+            <div class = row >
+                <div class="input-field col s4">
+                    <input id="idDateQuote" type="text" class="validate" placeholder="Placeholder"> 
+                    <label for="idDateQuote">RUC</label>
+                  </div>       
+                <div class="input-field col s4">
+                  <input id="idBRUCEmpC" type="text" class="validate" placeholder="Placeholder"> 
+                  <label for="idBRUCEmpC">RUC</label>
+                </div>            
+                <div class="input-field col s4">
+                  <input id="BNomContactEmpC" type="text" class="validate"  placeholder="Placeholder">
+                  <label for="BNomContactEmpC">Nombres del Contacto</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BidtelEmpC" type="tel" class="validate" placeholder="Placeholder">
+                  <label for="BidtelEmpC">Telefono del Contacto</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BNumNinEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder="Placeholder">
+                  <label for="BNumNinEmpC">Numero de niños</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BNumHorEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder="Placeholder">
+                  <label for="BNumHorEmpC">Número de horas</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BCosBudEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder="Placeholder">
+                  <label for="BCosBudEmpC">S/. Costo de horas por Buddy</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BNumZoomEmpC" type="number" min ="0" max = "100000" class="validate" placeholder="Placeholder">
+                  <label for="BNumZoomEmpC">Número de Salas Zoom</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BCosZoomEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder="Placeholder">
+                  <label for="BCosZoomEmpC">S/. Costo por Sala Zoom</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BNumKydemiEmpC" type="number" min ="0" max = "100000"  class="validate" placeholder="Placeholder">
+                  <label for="BNumKydemiEmpC">Número de Licencias Kydemi</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BCosKydemiEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder="Placeholder">
+                  <label for="BCosKydemiEmpC">S/. Costo por Licencia</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BNumModEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder="Placeholder">
+                  <label for="BNumModEmpC">Número de Moderadores</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BCosModEmpC" type="number" min ="0" max = "1000000"  step="0.01" class="validate" placeholder="Placeholder">
+                  <label for="BCosModEmpC">S/. Costo por Moderador</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BotroCosEmpC" type="number" min ="0" max = "10000" step="0.01" class="validate" placeholder="Placeholder">
+                  <label for="BotroCosEmpC">Otros Costos</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="TotalCosEmpC" type="number" min ="0" max = "10000" step="0.01" class="validate" placeholder="Placeholder">
+                    <label for="TotalCosEmpC">Total Costo</label>
+                  </div>
+                <div class="input-field col s4">
+                    <input id="BDateBegEmpC" type="text" class="validate" placeholder="Placeholder">
+                    <label for="BDateBegEmpC">Fecha Inicio</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="BDateEndEmpC" type="text" class="validate" placeholder="Placeholder">
+                    <label for="BDateEndEmpC">Fecha Fin</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BidrentabilidadEmpC" type="number" min ="0" max = "1"  step="0.01" class="validate" placeholder="Placeholder">
+                  <label for="BidrentabilidadEmpC">Rentabilidad</label>
+                </div>
+                <div class="input-field col s4">
+                  <input id="BidmontoventaEmp" type="number" min ="0" max = "900000" step="0.01"  class="validate" placeholder="Placeholder">
+                  <label class="active" for="BidmontoventaEmp">S/. Monto de Venta</label>
+                </div>
+              </div> 
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-close btn waves-effect waves-light">Cerrar</a>
+            
+        </div>
+        
+    </div>
+
     </div>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
+    <script src = "./enccode.js">
 
     </script>
   </body>

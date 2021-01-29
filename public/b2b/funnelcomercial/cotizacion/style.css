@@ -1,5 +1,13 @@
 
   /* Apariencia de los botones */ 
-  .btn {
+  .btnbuscar {
     width: 220px;
   }
+  .texto{
+    color: #4db6ac
+  }
+  .class-CEmpN {
+    text-align: left;
+    font-size: 10px;
+    width: 200px;
+}

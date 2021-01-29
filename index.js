@@ -23,7 +23,6 @@ app.post('/apis', (request, response)=>{
     })
 })
 app.get('/api-enviar-disponibilidaddb', (request, response)=>{ 
-    console.log(request.body);
     dboperations.getCourses().then(result => {
         response.json(result[0]);
      })
@@ -66,5 +65,31 @@ app.post('/api-nueva-cotizacion', (request, response)=>{
     })
 })
 
+app.get('/api-obt-cot-total', (request, response)=>{ 
+    dboperations.getQuotes().then(result => {
+        response.json(result[0]);
+     })
+})
 
+
+app.post('/api-obt-det-cot', (request, response)=>{ 
+    const datas = request.body;
+    dboperations.getDetailQuote(datas).then(result => {
+       response.status(201).json(result);
+    })
+})
+
+app.post('/api-obt-det-cot-byruc', (request, response)=>{ 
+    const datas = request.body;
+    dboperations.getDetailQuotesbyRuc(datas).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
+app.post('/api-post-detailquote', (request, response)=>{ 
+    const data = request.body;
+    dboperations.addDetailQuote(data).then(result => {
+       response.status(201).json(result);
+    })
+})
 //

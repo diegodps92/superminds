@@ -78,6 +78,28 @@ async function addOrder(data) {
 
 }
 
+async function addDetailQuote(data) {
+
+    try {
+        let pool = await sql.connect(config);
+        let insertProduct = await pool.request()
+        .input('idquote', sql.NVarChar, data.comod)
+            .input('course', sql.NVarChar, data.course)
+            .input('coursecode', sql.NVarChar, data.comod)
+            .input('detailcoursecode', sql.NVarChar, data.comod)
+            .input('age', sql.NVarChar, data.age)
+            .input('cost', sql.NVarChar, data.cost)
+            .input('creationdate', sql.NVarChar, data.comod)
+            .input('editiondate', sql.NVarChar, data.comod)
+            .execute('enterprise.insertdetailquote');
+        return insertProduct.recordsets;
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+}
+
 async function addQuote(data) {
 
     try {
@@ -142,6 +164,45 @@ async function getMonth() {
     }
 }
 
+async function getQuotes() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT top 20 format(dateQuote, 'dd-MM-yy') as dateQuote, quoteID, entCompleteName,numChild, numHour, totalCost, quoteAmount from enterprise.enterprisequote group by dateQuote, quoteID, entCompleteName,numChild, numHour, totalCost, quoteAmount order by dateQuote desc");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function getDetailQuote(data) {
+    try {
+        let pool = await sql.connect(config);
+        let product = await pool.request()
+            .input('input_parameter', sql.Int, data.custID)
+            .query("SELECT * from [enterprise].[enterprisequote] where quoteID = @input_parameter");  
+        return product.recordsets;
+
+    }
+    catch (error) {
+        console.log(error);
+    }
+} 
+
+async function getDetailQuotesbyRuc(data) {
+    try {
+        let pool = await sql.connect(config);
+        let product = await pool.request()
+            .input('input_parameter', sql.NVarChar, data.custID)
+            .query("SELECT * from [enterprise].[enterprisequote] where entRUC = @input_parameter");  
+        return product.recordsets;
+
+    }
+    catch (error) {
+        console.log(error);
+    }
+} 
+
 
 module.exports = {
     getCourses: getCourses,
@@ -151,5 +212,10 @@ module.exports = {
     updateStock: updateStock,
     getMonth: getMonth,
     getEmpresas: getEmpresas,
-    addQuote: addQuote
+    addQuote: addQuote,
+    getQuotes:getQuotes,
+    getDetailQuote:getDetailQuote,
+    getDetailQuotesbyRuc:getDetailQuotesbyRuc,
+    addDetailQuote:addDetailQuote
+    
 }
