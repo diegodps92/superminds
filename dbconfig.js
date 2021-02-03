@@ -8,7 +8,6 @@ const config = {
         trustedconnection: true,
         enableArithAbort : true, 
     },
-    encrypt=true,
     port : 1433
 }
 module.exports = config; 
