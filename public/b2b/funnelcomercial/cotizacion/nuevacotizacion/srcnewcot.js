@@ -244,6 +244,7 @@ function limpieza () {
     document.getElementById('item-curso-detcot').value = '';
     document.getElementById('item-edad-detcot').value = '';
     document.getElementById('idDetCotCosto').value = '';
+    document.getElementById('idrentabilidadEmpC').value = '';
     alldata = '';
     var searchResultsBox = document.getElementById("CDetEmpResults");
     var templateBox = document.getElementById("CDetEmprowTemplate");
