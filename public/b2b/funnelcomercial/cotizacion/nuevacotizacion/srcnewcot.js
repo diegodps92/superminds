@@ -1,9 +1,16 @@
+
+
+
 var arrayofEmpresas; 
 var alldata = [];
 var arrayOfValues;
 const elemsSidenav = document.querySelectorAll(".sidenav");
 const instancesSidenav = M.Sidenav.init(elemsSidenav, {
     edge: "left"
+});
+const elemsDropdown = document.querySelectorAll(".dropdown-trigger");
+const instancesDropdown = M.Dropdown.init(elemsDropdown, {
+    coverTrigger: false
 });
 ///
 document.addEventListener('DOMContentLoaded', cotFirsStep());
@@ -68,7 +75,7 @@ document.getElementById("btn-precioSug").addEventListener("click", function(){
    const costoModerador = numModerador * costPerModerador;
    const totalCost  = costoBud + costoZoom + costoKydemi + costoModerador + Number(otherCost);
    const percent = document.getElementById("idrentabilidadEmpC").value;
-    document.getElementById("idmontoventaEmp").value = totalCost + (percent + 1) * totalCost;
+    document.getElementById("idmontoventaEmp").value = totalCost / (1- percent);
     document.getElementById("totalcostoCot").textContent = totalCost;
     document.getElementById("totalcostBudCot").textContent = costoModerador + costoBud;
     document.getElementById("totalcostLiscCot").textContent = costoKydemi;
@@ -105,7 +112,8 @@ function validateForm() {
    var idDetCotCourse = document.getElementById('item-curso-detcot');
    var idDetCotEdad = document.getElementById('item-edad-detcot');
    var idDetCotCosto = document.getElementById('idDetCotCosto');
-    checkRequired([idDetCotCourse, idDetCotEdad, idDetCotCosto]); 
+   var idDetCotCantidad = document.getElementById('idDetCotCantidad');
+    checkRequired([idDetCotCourse, idDetCotEdad, idDetCotCosto,idDetCotCantidad]); 
 }
 
 function checkRequired(inputArr){
@@ -129,7 +137,8 @@ function checkRequired(inputArr){
     var idDetCotCourse = document.getElementById('item-curso-detcot').value;
     var idDetCotEdad = document.getElementById('item-edad-detcot').value;
     var idDetCotCosto = document.getElementById('idDetCotCosto').value;
-    var data = [iddetCot,idDetCotCourse,idDetCotEdad,idDetCotCosto]
+    var hourqty = document.getElementById('idDetCotCantidad').value;
+    var data = [iddetCot,idDetCotCourse,idDetCotEdad,idDetCotCosto,hourqty]
     alldata.push(data);
     var searchResultsBox = document.getElementById("CDetEmpResults");
     var templateBox = document.getElementById("CDetEmprowTemplate");
@@ -140,11 +149,13 @@ function checkRequired(inputArr){
     var DetCotID = tr.querySelector(".class-DetCotID");
     var DetCotCurso = tr.querySelector(".class-DetCotCurso");
     var DetCotEdad = tr.querySelector(".class-DetCotEdad");
+    var DetCotCantidad = tr.querySelector(".class-DetCotCantidad");
     var DetCotCosto = tr.querySelector(".class-DetCotCosto");
     DetCotID.textContent = r[0];
     DetCotCurso.textContent = r[1];
     DetCotEdad.textContent = r[2];
     DetCotCosto.textContent = r[3];
+    DetCotCantidad.textContent = r[4]
     searchResultsBox.appendChild(tr);  
     });
     let arrayofsums = alldata.reduce((acc,val) => {return Number(val[3]) + acc;},0);
@@ -244,6 +255,7 @@ function limpieza () {
     document.getElementById('item-curso-detcot').value = '';
     document.getElementById('item-edad-detcot').value = '';
     document.getElementById('idDetCotCosto').value = '';
+    document.getElementById('idDetCotCantidad').value = '';
     document.getElementById('idrentabilidadEmpC').value = '';
     alldata = '';
     var searchResultsBox = document.getElementById("CDetEmpResults");
@@ -265,8 +277,10 @@ document.getElementById("app-det-table").onclick = function myFunction(e) {
             const course = v[1];
             const age = v [2];
             const cost = v [3] ;  
+            const hourqty = Number(v[4]);
             const comod = "0";
-            const data = {course, age , cost, comod};
+            const data = {course, age , cost, comod, hourqty};
+            console.log (data);
             const options = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},

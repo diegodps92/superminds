@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
   </head>
 
   <body>
@@ -70,13 +70,13 @@
     <div class = row >
       <div class="input-field col s4">
         <i class="material-icons prefix">account_circle</i>
-        <input id="idRUCEmpC" type="text" class="validate" name ='b'> 
+        <input id="idRUCEmpC" type="text" class="validate" name ='b' placeholder="."> 
         <label class="active" for="idRUCEmpC">RUC</label>
       </div>
       
       <div class="input-field col s4">
         <i class="material-icons prefix">account_circle</i>
-        <input id="idRubroEmpC" type="text" class="validate" name ='b'>
+        <input id="idRubroEmpC" type="text" class="validate" name ='b'placeholder=".">
         <label class="active" for="idRubroEmpC">Rubro</label>
       </div>
       <div class="input-field col s4">
@@ -162,7 +162,7 @@
       </div>
       <div class="input-field col s4">
         <i class="material-icons prefix">attach_money</i>
-        <input id="idmontoventaEmp" type="number" min ="0" max = "900000" step="0.01"  class="validate">
+        <input id="idmontoventaEmp" placeholder ="." type="number" min ="0" max = "900000" step="0.01"  class="validate">
         <label class="active" for="idmontoventaEmp">S/. Monto de Venta</label>
       </div>
       <div class="input-field col s3">
@@ -179,23 +179,29 @@
       </div>  
         <div class="row">
 
-        <div class="input-field col s4">
+        <div class="input-field col s3">
           <select class="browser-default" id = "item-curso-detcot">
           <option value="" disabled selected>Selecciona el curso</option>
           </select>
         </div>
         
-        <div class="input-field col s4">
+        <div class="input-field col s3">
           <select class="browser-default" id = "item-edad-detcot">
             <option value="" disabled selected>Selecciona la edad</option>
           </select>
         </div>
+        <div class="input-field col s3">
+          <i class="material-icons prefix">person_add</i>
+          <input id="idDetCotCantidad" type="number" min ="0" max = "900000" step="0.01" class="validate" name ='b'>
+          <label class="active" for="idDetCotCantidad">Cantidad</label>
+        </div>
 
-        <div class="input-field col s4">
-          <i class="material-icons prefix">account_circle</i>
+        <div class="input-field col s3">
+          <i class="material-icons prefix">attach_money</i>
           <input id="idDetCotCosto" type="number" min ="0" max = "900000" step="0.01" class="validate" name ='b'>
           <label class="active" for="idDetCotCosto">Costo</label>
         </div>
+
 
       </div>
        <div id="toast" class="showsssss"></div>
@@ -224,8 +230,9 @@
                   <th scope="col">#</th>
                   <th scope="col">Curso</th>
                   <th scope="col">Edad</th>
+                  <th scope="col">Cantidad</th>
                   <th scope="col">S/.Costo</th>
-                  <th scope="col">Delete</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody id = "CDetEmpResults">
@@ -236,6 +243,7 @@
                   <td class="class-DetCotID" scope ="row"></td>
                   <td class="class-DetCotCurso"></td>
                   <td class="class-DetCotEdad"></td>
+                  <td class="class-DetCotCantidad"></td>
                   <td class="class-DetCotCosto"></td>
                   <td><button class="btn waves-effect waves-light del-but-detcot">
                     <i class="material-icons right">delete</i></button></td>

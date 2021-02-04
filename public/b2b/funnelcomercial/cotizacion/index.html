@@ -110,87 +110,107 @@
     <div id="meu-modal" class="modal"> <!-- bottom-sheet -->
         <div class="modal-content">
             <div class = row >
-                <div class="input-field col s4">
-                    <input id="idDateQuote" type="text" class="validate" placeholder="Placeholder"> 
-                    <label for="idDateQuote">RUC</label>
+              <div class="input-field col s1">
+                <input id="idQuote" disabled value="I am not editable"  type="text" class="validate" placeholder=" "> 
+                <label for="idQuote">ID</label>
+              </div>  
+                <div class="input-field col s3">
+                    <input id="idDateQuote" disabled value="I am not editable" type="text" class="validate" placeholder=" "> 
+                    <label for="idDateQuote">fecha</label>
                   </div>       
                 <div class="input-field col s4">
-                  <input id="idBRUCEmpC" type="text" class="validate" placeholder="Placeholder"> 
+                  <input id="idBRUCEmpC" disabled value="I am not editable" type="text" class="validate" placeholder=" "> 
                   <label for="idBRUCEmpC">RUC</label>
-                </div>            
+                </div> 
+
                 <div class="input-field col s4">
-                  <input id="BNomContactEmpC" type="text" class="validate"  placeholder="Placeholder">
+                  <input id="idRazonSocial" disabled value="I am not editable" type="text" class="validate" placeholder=" "> 
+                  <label for="idRazonSocial">Razón Socual</label>
+                </div>    
+
+                <div class="input-field col s4">
+                  <input id="BNomContactEmpC" type="text" class="validate"  placeholder=" ">
                   <label for="BNomContactEmpC">Nombres del Contacto</label>
                 </div>
+
                 <div class="input-field col s4">
-                  <input id="BidtelEmpC" type="tel" class="validate" placeholder="Placeholder">
+                  <input id="BidtelEmpC" type="tel" class="validate" placeholder=" ">
                   <label for="BidtelEmpC">Telefono del Contacto</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BNumNinEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder="Placeholder">
+                  <input id="BNumNinEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder=" ">
                   <label for="BNumNinEmpC">Numero de niños</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BNumHorEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder="Placeholder">
+                  <input id="BNumHorEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder=" ">
                   <label for="BNumHorEmpC">Número de horas</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BCosBudEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder="Placeholder">
+                  <input id="BCosBudEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder=" ">
                   <label for="BCosBudEmpC">S/. Costo de horas por Buddy</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BNumZoomEmpC" type="number" min ="0" max = "100000" class="validate" placeholder="Placeholder">
-                  <label for="BNumZoomEmpC">Número de Salas Zoom</label>
+                  <input id="BNumZoomEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder=" ">
+                   <label for="BNumZoomEmpC">Número de Salas Zoom</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BCosZoomEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder="Placeholder">
+                  <input id="BCosZoomEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder=" ">
                   <label for="BCosZoomEmpC">S/. Costo por Sala Zoom</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BNumKydemiEmpC" type="number" min ="0" max = "100000"  class="validate" placeholder="Placeholder">
+                  <input id="BNumKydemiEmpC" type="number" min ="0" max = "100000"  class="validate" placeholder=" ">
                   <label for="BNumKydemiEmpC">Número de Licencias Kydemi</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BCosKydemiEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder="Placeholder">
+                  <input id="BCosKydemiEmpC" type="number" min ="0" max = "1000000" step="0.01" class="validate" placeholder=" ">
                   <label for="BCosKydemiEmpC">S/. Costo por Licencia</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BNumModEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder="Placeholder">
+                  <input id="BNumModEmpC" type="number" min ="0" max = "1000000" class="validate" placeholder=" ">
                   <label for="BNumModEmpC">Número de Moderadores</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BCosModEmpC" type="number" min ="0" max = "1000000"  step="0.01" class="validate" placeholder="Placeholder">
+                  <input id="BCosModEmpC" type="number" min ="0" max = "1000000"  step="0.01" class="validate" placeholder=" ">
                   <label for="BCosModEmpC">S/. Costo por Moderador</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BotroCosEmpC" type="number" min ="0" max = "10000" step="0.01" class="validate" placeholder="Placeholder">
+                  <input id="BotroCosEmpC" type="number" min ="0" max = "10000" step="0.01" class="validate" placeholder=" ">
                   <label for="BotroCosEmpC">Otros Costos</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="TotalCosEmpC" type="number" min ="0" max = "10000" step="0.01" class="validate" placeholder="Placeholder">
+                    <input id="TotalCosEmpC" type="number" min ="0" max = "10000" step="0.01" class="validate" placeholder=" ">
                     <label for="TotalCosEmpC">Total Costo</label>
                   </div>
                 <div class="input-field col s4">
-                    <input id="BDateBegEmpC" type="text" class="validate" placeholder="Placeholder">
-                    <label for="BDateBegEmpC">Fecha Inicio</label>
+                  <i class="material-icons prefix">perm_contact_calendar</i>
+                  <input id= "BDateBegEmpC" disabled value="I am not editable" placeholder="Fecha de Inicio Propuesta" type="text" class="datepicker">
                 </div>
                 <div class="input-field col s4">
-                    <input id="BDateEndEmpC" type="text" class="validate" placeholder="Placeholder">
-                    <label for="BDateEndEmpC">Fecha Fin</label>
+                  <i class="material-icons prefix">perm_contact_calendar</i>
+                  <input id= "BDateEndEmpC" disabled value="I am not editable"  placeholder="Fecha de Inicio Propuesta" type="text" class="datepicker">
                 </div>
+
                 <div class="input-field col s4">
-                  <input id="BidrentabilidadEmpC" type="number" min ="0" max = "1"  step="0.01" class="validate" placeholder="Placeholder">
+                  <input id="BidrentabilidadEmpC" type="number" min ="0" max = "1"  step="0.01" class="validate" placeholder=" ">
                   <label for="BidrentabilidadEmpC">Rentabilidad</label>
                 </div>
                 <div class="input-field col s4">
-                  <input id="BidmontoventaEmp" type="number" min ="0" max = "900000" step="0.01"  class="validate" placeholder="Placeholder">
+                  <input id="BidmontoventaEmp" type="number" min ="0" max = "900000" step="0.01"  class="validate" placeholder=" ">
                   <label class="active" for="BidmontoventaEmp">S/. Monto de Venta</label>
+                </div>
+
+                <div class="input-field col s3">
+                  <select class="browser-default" id = "item-estado">
+                  <option value="" disabled selected>Estado</option>
+                  </select>
                 </div>
               </div> 
         </div>
         <div class="modal-footer">
+          <button class="btn waves-effect waves-light" id="btn-editar-cot">Guardar
+            <i class="material-icons right">save</i>
+        </button>
             <a href="#" class="modal-close btn waves-effect waves-light">Cerrar</a>
-            
         </div>
         
     </div>
