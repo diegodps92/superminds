@@ -35,6 +35,20 @@ async function getEmpresas() {
     }
 }
 
+async function getEmpresasbyRUC(data) {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request()
+        .input('input_parameter', sql.NVarChar, data.custID)
+        .query("SELECT razonSocial, entRUC, sector from enterprise.enterprisedetail where entRUC = @input_parameter");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
 async function getStock(data) {
     try {
         let pool = await sql.connect(config);
@@ -91,6 +105,7 @@ async function addDetailQuote(data) {
             .input('cost', sql.NVarChar, data.cost)
             .input('creationdate', sql.NVarChar, data.comod)
             .input('editiondate', sql.NVarChar, data.comod)
+            .input('hourqty', sql.Int, data.hourqty)
             .execute('enterprise.insertdetailquote');
         return insertProduct.recordsets;
     }
@@ -135,6 +150,38 @@ async function addQuote(data) {
 
 }
 
+
+async function editQuote(data) {
+
+    try {
+        let pool = await sql.connect(config);
+        let insertProduct = await pool.request()
+            .input('quoteID', sql.Float, data.idquote)
+            .input('entTelContact', sql.NVarChar, data.entelcontacto)
+            .input('quoteAmount', sql.Float, data.BidmontoventaEmp)
+            .input('numChild', sql.Int, data.BNumHorEmpC)
+            .input('numHour', sql.Float, data.BNumNinEmpC)
+            .input('costperHourBuddy', sql.Float, data.BCosBudEmpC)
+            .input('numZoom', sql.Int, data.BNumZoomEmpC)
+            .input('costZoom', sql.Float, data.BCosZoomEmpC)
+            .input('numLiscKydemy', sql.Int, data.BNumKydemiEmpC)
+            .input('costKydemy', sql.Float, data.BCosKydemiEmpC )
+            .input('numModerador', sql.Int, data.BNumModEmpC)
+            .input('costPerModerador', sql.Float, data.BCosModEmpC)
+            .input('otherCost', sql.Int, data.BotroCosEmpC)
+            .input('totalCost', sql.Float, data.TotalCosEmpC)
+            .input('editdate', sql.Date, data.date)
+            .input('estado', sql.NVarChar, data.estado)
+            .execute('enterprise.updatequote')
+        return insertProduct.recordsets;
+        
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+}
+
 async function updateStock(data) {
     try {
         let pool = await sql.connect(config);
@@ -157,6 +204,28 @@ async function getMonth() {
     try {
         let pool = await sql.connect(config);
         let products = await pool.request().query("SELECT * from mes");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function getEntStatus() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT estado from enterprise.estadocot");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function getLeadFuente() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT fuente from enterprise.fuentelead");
         return products.recordsets;
     }
     catch (error) {
@@ -216,6 +285,9 @@ module.exports = {
     getQuotes:getQuotes,
     getDetailQuote:getDetailQuote,
     getDetailQuotesbyRuc:getDetailQuotesbyRuc,
-    addDetailQuote:addDetailQuote
-    
+    addDetailQuote:addDetailQuote,
+    editQuote:editQuote,
+    getEntStatus:getEntStatus,
+    getEmpresasbyRUC:getEmpresasbyRUC,
+    getLeadFuente:getLeadFuente
 }

@@ -7,10 +7,38 @@ const elemsSidenav = document.querySelectorAll(".sidenav");
 const instancesSidenav = M.Sidenav.init(elemsSidenav, {
     edge: "left"
 });
-
 const elemsModal = document.querySelectorAll(".modal");
-const instancesModal = M.Modal.init(elemsModal);
+const instancesModal = M.Modal.init(elemsModal, {onOpenStart: dropdown()} );
 
+ async function dropdown() {
+    const response = await fetch('/api-status-emp');
+    const data = await response.json();
+    const arrayMes = data.filter(function(r){return true;});
+    console.log(arrayMes);
+    const item = document.getElementById("item-estado");
+    const estado = 'estado'
+    const index = 'estado';
+    addUniqueOptionsToDropDownList(item, arrayMes, index, estado)
+ } 
+
+ 
+ function addUniqueOptionsToDropDownList (item, arrayofArrays, index, nombre) {       
+    var currentlyAdded = [];
+    item.innerHTML= '<option>Selecciona '+ nombre+'</option>';
+    arrayofArrays.map(function(r)
+    { 
+      if(currentlyAdded.indexOf(r[index]) ===-1) {
+      var option = document.createElement("option");
+      option.textContent = r[index];
+      item.appendChild(option);
+      currentlyAdded.push(r[index]);
+    }
+    });      
+}
+
+
+const fechas = document.querySelectorAll('.datepicker');
+const fecpicker = M.Datepicker.init(fechas, {format: 'yyyy-mm-dd'});
 
 callcotizaciones();
 async function callcotizaciones(){
@@ -104,12 +132,13 @@ document.getElementById("app-table").onclick = function myFunction(e) {
         const djson = await response.json();
         newarray = Object.values(djson);
         newarrayofValues = newarray[0]; 
-
+        
+        document.getElementById("idQuote").value= newarrayofValues[0].quoteID
         document.getElementById("idDateQuote").value= newarrayofValues[0].dateQuote.substr(0,10);
         document.getElementById("idBRUCEmpC").value= newarrayofValues[0].entRUC;
-        document.getElementById("BNomContactEmpC").value= newarrayofValues[0].entCompleteName;      
+        document.getElementById("idRazonSocial").value= newarrayofValues[0].entCompleteName;
+        document.getElementById("BNomContactEmpC").value= newarrayofValues[0].entContact;      
         document.getElementById("BidtelEmpC").value= newarrayofValues[0].entTelContact;
-        document.getElementById("BidtelEmpC").value= newarrayofValues[0].entRUC;
         document.getElementById("BNumHorEmpC").value= newarrayofValues[0].numHour;
         document.getElementById("BNumNinEmpC").value= newarrayofValues[0].numChild;
         document.getElementById("BCosBudEmpC").value= newarrayofValues[0].costperHourBuddy;
@@ -124,5 +153,38 @@ document.getElementById("app-table").onclick = function myFunction(e) {
         document.getElementById("BidmontoventaEmp").value= newarrayofValues[0].quoteAmount;
         document.getElementById("BDateBegEmpC").value= newarrayofValues[0].BeginigDate.substr(0,10);
         document.getElementById("BDateEndEmpC").value= newarrayofValues[0].FinishDate.substr(0,10);
-        
+
         }   
+        
+        document.getElementById("btn-editar-cot").onclick = async function() { 
+            const date= 0 
+           const idquote = document.getElementById("idQuote").value;
+           const entelcontacto = document.getElementById("BidtelEmpC").value;
+           const BNumHorEmpC= document.getElementById("BNumHorEmpC").value;
+            const BNumNinEmpC = document.getElementById("BNumNinEmpC").value;
+           const BCosBudEmpC = document.getElementById("BCosBudEmpC").value;
+           const  BNumZoomEmpC = document.getElementById("BNumZoomEmpC").value;
+            const BCosZoomEmpC = document.getElementById("BCosZoomEmpC").value;
+            const BNumKydemiEmpC =  document.getElementById("BNumKydemiEmpC").value;
+            const BCosKydemiEmpC = document.getElementById("BCosKydemiEmpC").value;
+            const BNumModEmpC = document.getElementById("BNumModEmpC").value;
+            const BCosModEmpC = document.getElementById("BCosModEmpC").value;
+            const BotroCosEmpC = document.getElementById("BotroCosEmpC").value;
+            const TotalCosEmpC= document.getElementById("TotalCosEmpC").value;
+            const BidmontoventaEmp = document.getElementById("BidmontoventaEmp").value;
+            const BDateBegEmpC = new Date( document.getElementById("BDateBegEmpC").value);
+            const BDateEndEmpC = new Date(document.getElementById("BDateEndEmpC").value);
+            const estado = document.getElementById("item-estado").value;
+            const data = {date, estado, idquote, entelcontacto, BNumHorEmpC, BNumNinEmpC, TotalCosEmpC, BDateEndEmpC, BidmontoventaEmp,  BDateBegEmpC, BCosZoomEmpC, BCosBudEmpC, BNumZoomEmpC,BNumKydemiEmpC,BCosKydemiEmpC,BNumModEmpC,BCosModEmpC,BotroCosEmpC }
+            console.log(data);
+            const options = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+                };
+                //const response = await
+                const response = await fetch('/api-update-quote', options);
+                const djson = await response.json();
+                newarray = Object.values(djson);
+        }
+        

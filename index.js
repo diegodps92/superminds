@@ -39,6 +39,12 @@ app.get('/api-mes', (request, response)=>{
      })
 })
 
+app.get('/api-status-emp', (request, response)=>{ 
+    dboperations.getEntStatus().then(result => {
+        response.json(result[0]);
+     })
+})
+
 app.get('/api-obt-empresas', (request, response)=>{ 
     dboperations.getEmpresas().then(result => {
         response.json(result[0]);
@@ -92,4 +98,25 @@ app.post('/api-post-detailquote', (request, response)=>{
        response.status(201).json(result);
     })
 })
+
+app.post('/api-update-quote', (request, response)=>{ 
+    const data = request.body;
+    dboperations.editQuote(data).then(result => {
+       response.status(201).json(result);
+    })
+})
+app.post('/api-getEmpresasbyRUC', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getEmpresasbyRUC(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
+app.get('/api-getLeadFuente', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getLeadFuente(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
 //
