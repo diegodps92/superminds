@@ -105,4 +105,18 @@ app.post('/api-update-quote', (request, response)=>{
        response.status(201).json(result);
     })
 })
+app.post('/api-getEmpresasbyRUC', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getEmpresasbyRUC(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
+app.get('/api-getLeadFuente', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getLeadFuente(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
 //

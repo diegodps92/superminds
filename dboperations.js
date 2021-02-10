@@ -35,6 +35,20 @@ async function getEmpresas() {
     }
 }
 
+async function getEmpresasbyRUC(data) {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request()
+        .input('input_parameter', sql.NVarChar, data.custID)
+        .query("SELECT razonSocial, entRUC, sector from enterprise.enterprisedetail where entRUC = @input_parameter");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
 async function getStock(data) {
     try {
         let pool = await sql.connect(config);
@@ -208,6 +222,17 @@ async function getEntStatus() {
     }
 }
 
+async function getLeadFuente() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT fuente from enterprise.fuentelead");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 async function getQuotes() {
     try {
         let pool = await sql.connect(config);
@@ -262,5 +287,7 @@ module.exports = {
     getDetailQuotesbyRuc:getDetailQuotesbyRuc,
     addDetailQuote:addDetailQuote,
     editQuote:editQuote,
-    getEntStatus:getEntStatus
+    getEntStatus:getEntStatus,
+    getEmpresasbyRUC:getEmpresasbyRUC,
+    getLeadFuente:getLeadFuente
 }
