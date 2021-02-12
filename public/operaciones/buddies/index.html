@@ -12,7 +12,6 @@
   </head>
 
   <body>
-    
     <div class="navbar-fixed">
       <nav class= "teal lighten-2" role="navigation" >
           <div class="nav-wrapper container teal lighten-2">
@@ -36,9 +35,9 @@
 
               <!-- Dropdown -->
               <ul id="dropdown-menu" class="dropdown-content teal lighten-2">
-                  <li><a href="./b2b/funnelcomercial/cotizacion" class = "white-text">Cotización</a></li>
-                  <li><a href="./b2b/funnelcomercial/ventas"  class = "white-text" >Venta</a></li>
-                  <li><a href="./b2b/funnelcomercial/leads"  class = "white-text" >Leads</a></li>
+                  <li><a href="./b2b/cotizacion" class = "white-text">Cotización</a></li>
+                  <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+                  <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
               </ul>
           </div>
       </nav>
@@ -47,43 +46,36 @@
   <!-- Menu Mobile -->
   <ul id="mobile-navbar" class="sidenav teal lighten-2">
       <li><a href="/" >Inicio</a></li>
-      <li><a href="./b2b/funnelcomercial/leads"  class = "white-text" >Leads</a></li>
-      <li><a href="./b2b/funnelcomercial/cotizacion"  class = "white-text" >Cotización</a></li>
-      <li><a href="./b2b/funnelcomercial/ventas"  class = "white-text" >Venta</a></li>
+      <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+      <li><a href="./b2b/cotizacion"  class = "white-text" >Cotización</a></li>
+      <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
   </ul>
   <div class="container">
     <div class="row">
 
-      <h2 style="color:#27acb9";><center>Bienvenido a Superminds <span style='font-size:50px;'>&#129303;</span> </center></h2><
-      <h3 style="color:#2c3b59"><center>¿Que deseas hacer hoy?</center></h3><br>
-      <br>
-      <br>
+      <h2>Sección Buddies</h2>
+      <p>Acá podrás ver los buddies, realizar cambios y agregar nuevos. </p>
 
-    <div class = row >
- 
       <div class="input-field col s4">
-        <a href="./b2b" class="btn waves-effect waves-light" >B2B
-        <i class="material-icons right">send</i>
-        </a>
-      </div>
-      <div class="input-field col s4">
-        <a href="./b2c" class="btn waves-effect waves-light" >B2C
-          <i class="material-icons right">send</i>
+        <a href="https://superbuddy1.typeform.com/to/Wxtwx5De" class="btn waves-effect waves-light" >Nuevo Buddy
+          <i class="material-icons right">add_circle</i>
         </a>
       </div>
 
-      <div class="input-field col s4">
-        <a href="./operaciones" class="btn waves-effect waves-light" >OPERACIONES
-          <i class="material-icons right">settings</i>
-        </a>
-      </div>
 
+      
+      
    </div>    
   </div> <!--close-->
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="srcinicio.js">
-
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems);
+    var selelems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(selelems);
+    });
     </script>
   </body>
 </html>

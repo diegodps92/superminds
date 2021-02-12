@@ -123,6 +123,8 @@ async function addQuote(data) {
             .input('dateQuote', sql.NVarChar, data.dateQuote)
             .input('entRUC', sql.NVarChar, data.entRUC)
             .input('entCompleteName', sql.NVarChar, data.entCompleteName)
+            .input('telcontacto', sql.NVarChar, data.telcontacto)
+            .input('programa',sql.NVarChar, data.programa)
             .input('entContact', sql.NVarChar, data.entContact)
             .input('entTelContact', sql.Int, data.entTelContact)
             .input('quoteAmount', sql.Float, data.quoteAmount)
@@ -272,6 +274,53 @@ async function getDetailQuotesbyRuc(data) {
     }
 } 
 
+async function addNewLeadB2B(data) {
+
+    try {
+        let pool = await sql.connect(config);
+        let insertProduct = await pool.request()
+            .input('creationdate', sql.NVarChar, data.idrubro)
+            .input('ruc', sql.NVarChar, data.ruc)
+            .input('razonsocial', sql.NVarChar, data.razonsocial)
+            .input('rubro', sql.NVarChar, data.rubro)
+            .input('fuente', sql.NVarChar, data.fuente)
+            .input('cargo', sql.NVarChar, data.cargo)
+            .input('nomcontacto', sql.NVarChar, data.nomcontacto)
+            .input('telcontacto', sql.NVarChar, data.telcontacto)
+            .input('programa',sql.NVarChar, data.programa)
+            .input('especificacion',sql.NVarChar, data.especificacion)
+            .execute('enterprise.insertarleads');
+        return insertProduct.recordsets;
+        
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+}
+
+async function getLeadPrograma() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT razoncontacto from enterprise.programa");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function getLeadEspecificacion() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT especificacion from enterprise.programaEspecificacion");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 
 module.exports = {
     getCourses: getCourses,
@@ -289,5 +338,8 @@ module.exports = {
     editQuote:editQuote,
     getEntStatus:getEntStatus,
     getEmpresasbyRUC:getEmpresasbyRUC,
-    getLeadFuente:getLeadFuente
+    getLeadFuente:getLeadFuente,
+    addNewLeadB2B:addNewLeadB2B,
+    getLeadPrograma:getLeadPrograma,
+    getLeadEspecificacion:getLeadEspecificacion
 }

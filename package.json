@@ -19,7 +19,7 @@
     "nedb": "^1.8.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.7"
   },
   "keywords": [],
   "author": "Diego Peña",

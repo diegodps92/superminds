@@ -58,6 +58,41 @@ function addUniqueOptionsToDropDownList (item, arrayofArrays, index, nombre) {
     });      
 }
 
+async function  cotFirsStep (){    
+    const responses2 = await fetch('/api-getLeadPrograma');
+    const datas2 = await responses2.json();
+    const arrayOfValues2 = datas2.filter(function(r){return true;});
+    const item2 = document.getElementById("item-programa");
+    const index2 = 'razoncontacto';
+    const nombre2 = 'el programa';
+    addUniqueOptionsToDropDownList (item2, arrayOfValues2, index2, nombre2);
+    const responses3 = await fetch('/api-getLeadEspecificacion');
+    const datas3 = await responses3.json();
+    const arrayOfValues3 = datas3.filter(function(r){return true;});
+    const item3 = document.getElementById("item-especifico");
+    const index3 = 'especificacion';
+    const nombre3 = 'la especificación';
+    addUniqueOptionsToDropDownList (item3, arrayOfValues3, index3, nombre3);
+
+    var selelems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(selelems);
+    }
+    
+  function addUniqueOptionsToDropDownList (item, arrayofArrays, index, nombre) {       
+    var currentlyAdded = [];
+    item.innerHTML= '<option>Selecciona '+ nombre+'</option>';
+    arrayofArrays.map(function(r)
+    { 
+      if(currentlyAdded.indexOf(r[index]) ===-1) {
+      var option = document.createElement("option");
+      option.textContent = r[index];
+      item.appendChild(option);
+      currentlyAdded.push(r[index]);
+    }
+    });      
+}
+
+
 document.getElementById("btn-precioSug").addEventListener("click", function(){
     M.updateTextFields();
   const numHour  =  Number(document.getElementById("NumHorEmpC").value);
@@ -180,6 +215,8 @@ function checkRequired(inputArr){
    const idRubroEmpC =  document.getElementById("idRubroEmpC").value;
    const entContact =  document.getElementById("NomContactEmpC").value;
    const entTelContact =  Number(document.getElementById("idtelEmpC").value);
+   const programa = document.getElementById("item-programa").value;
+   const especifico = document.getElementById("item-especifico").value;
    const quoteAmount  =  Number(document.getElementById("idmontoventaEmp").value);
    const numChild  =  Number(document.getElementById("NumNinEmpC").value); 
    const numHour  =  Number(document.getElementById("NumHorEmpC").value);

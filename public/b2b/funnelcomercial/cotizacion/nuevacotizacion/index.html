@@ -84,11 +84,36 @@
         <input id="NomContactEmpC" type="text" class="validate" name ='b'>
         <label for="NomContactEmpC">Nombres del Contacto</label>
       </div>
+
+      <div class="input-field col s4" >
+        <i class="material-icons prefix">class</i>
+        <select id = "item-programa">
+            <option value=""></option>
+          </select>
+          <label>Seleccionar Programa</label>
+      </div>
+
+      <div class="input-field col s4" >
+        <i class="material-icons prefix">filter_list</i>
+        <select id = "item-especifico">
+            <option value=""></option>
+          </select>
+          <label>Seleccionar Especificaciön</label>
+      </div>
+
+      <div class="input-field inline">
+        <i class="material-icons prefix">email</i>
+        <input id="moreemail_inline" type="email" class="validate">
+        <label for="moreemail_inline">Email</label>
+        <span class="helper-text" data-error="wrong" data-success="right">ejemplo@example.com</span>
+      </div>
+
       <div class="input-field col s4">
         <i class="material-icons prefix">phone</i>
         <input id="idtelEmpC" type="tel" class="validate">
         <label for="idtelEmpC">Telefono del Contacto</label>
       </div>
+
       <div class="input-field col s4">
         <i class="material-icons prefix">child_care</i>
         <input id="NumNinEmpC" type="number" min ="0" max = "1000000" class="validate">

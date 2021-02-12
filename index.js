@@ -119,4 +119,26 @@ app.get('/api-getLeadFuente', (request, response)=>{
     })
 })
 
+app.post('/api-addnewlead', (request, response)=>{ 
+    const data = request.body;
+    dboperations.addNewLeadB2B(data).then(result => {
+        console.log(data);
+       response.status(201).json(result[0]);
+    })
+})
+
+app.get('/api-getLeadPrograma', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getLeadPrograma(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
+app.get('/api-getLeadEspecificacion', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getLeadEspecificacion(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
 //

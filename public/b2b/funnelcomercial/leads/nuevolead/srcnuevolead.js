@@ -7,6 +7,11 @@ const elemsSidenav = document.querySelectorAll(".sidenav");
 const instancesSidenav = M.Sidenav.init(elemsSidenav, {
     edge: "left"
 });
+
+var selelems = document.querySelectorAll('select');
+var instances = M.FormSelect.init(selelems);
+
+
 var alldate = [];
 document.addEventListener('DOMContentLoaded',cotFirsStep());
 
@@ -37,6 +42,23 @@ document.getElementById("btn-buscar-Lemp").addEventListener("click", async funct
     const index = 'fuente';
     const nombre = 'la fuente';
     addUniqueOptionsToDropDownList (item, arrayOfValues, index, nombre);
+    const responses2 = await fetch('/api-getLeadPrograma');
+    const datas2 = await responses2.json();
+    const arrayOfValues2 = datas2.filter(function(r){return true;});
+    const item2 = document.getElementById("item-programa");
+    const index2 = 'razoncontacto';
+    const nombre2 = 'el programa';
+    addUniqueOptionsToDropDownList (item2, arrayOfValues2, index2, nombre2);
+    const responses3 = await fetch('/api-getLeadEspecificacion');
+    const datas3 = await responses3.json();
+    const arrayOfValues3 = datas3.filter(function(r){return true;});
+    const item3 = document.getElementById("item-especifico");
+    const index3 = 'especificacion';
+    const nombre3 = 'la especificación';
+    addUniqueOptionsToDropDownList (item3, arrayOfValues3, index3, nombre3);
+
+    var selelems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(selelems);
     }
     
   function addUniqueOptionsToDropDownList (item, arrayofArrays, index, nombre) {       
@@ -62,7 +84,9 @@ document.getElementById("btn-crealead").addEventListener("click", async function
     const nomcontacto   =  document.getElementById("NomContactEmpC").value;
     const telcontacto   =  document.getElementById("idtelEmpC").value;
     const cargo   =  document.getElementById("idCargo").value;
-    const data = {ruc, razonsocial, rubro,idrubro,fuente,nomcontacto,telcontacto, cargo }
+    const programa = document.getElementById("item-programa").value;
+    const especifico = document.getElementById("item-especifico").value;
+    const data = {ruc, razonsocial, rubro,idrubro,fuente,nomcontacto,telcontacto, cargo, programa, especifico }
     console.log(data);
     const options = {
     method: 'POST',
@@ -71,8 +95,8 @@ document.getElementById("btn-crealead").addEventListener("click", async function
 
    const response = await  fetch('/api-addnewlead', options);
    const json = await response.json();
-   await addDetailLead();
-   await limpieza();
+   //await addDetailLead();
+   //await limpieza();
    });
 
    function limpieza () {
