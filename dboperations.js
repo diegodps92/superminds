@@ -302,7 +302,7 @@ async function addNewLeadB2B(data) {
 async function getLeadPrograma() {
     try {
         let pool = await sql.connect(config);
-        let products = await pool.request().query("SELECT razoncontacto from enterprise.programa");
+        let products = await pool.request().query("SELECT programa from enterprise.programa");
         return products.recordsets;
     }
     catch (error) {

@@ -53,121 +53,64 @@
   <div class="container">
     <div class="row">
 
-      <h2>Formulario Nuevo Taller</h2>
-
-    <div class = row >
-      <div class="input-field col s4" >
-        <i class="material-icons prefix">account_circle</i>
-        <select>
-            <option value="">Tipo Documento</option>
-            <option value="DNI">DNI</option>
-            <option value="CE">CE</option>
-            <option value="PASAPORTE">PASAPORTE</option>
-          </select>
-          <label>Seleccionar documento</label>
-      </div>
+      <h2>Portal Talleres</h2>
+      <p>Acá podrás agregar nuevos talleres o ver los que tenemos en catálogo</p>
 
       <div class="input-field col s4">
-        <i class="material-icons prefix">account_circle</i>
-        <input id="idDNI" type="text" class="validate">
-        <label for="idDNI">DNI</label>
-      </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">account_circle</i>
-        <input id="idNomPariente" type="text" class="validate">
-        <label for="idNomPariente">Nombre del Pariente</label>
-      </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">account_circle</i>
-        <input id="idApePPariente" type="text" class="validate">
-        <label for="idApePPariente">Apellido Paterno</label>
-      </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">account_circle</i>
-        <input id="idApeMPariente" type="text" class="validate">
-        <label for="idApeMPariente">Apellido Materno</label>
-      </div>
-
-      <div class="input-field col s4">
-        <i class="material-icons prefix">phone</i>
-        <input id="idtelephone" type="tel" class="validate">
-        <label for="idtelephone">Telefono del pariente</label>
-      </div>
-
-
-      <div class="col s4">
-        <div class="input-field inline">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="email_inline" type="email" class="validate">
-          <label for="email_inline">Email del Pariente</label>
-          <span class="helper-text" data-error="wrong" data-success="right">example@example.com</span>
-        </div>
-      </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">child_care</i>
-        <input id= "Birthday" placeholder="Fecha de Nacimiento (Alumno)" type="text" class="datepicker">
-      </div>
-    </div>
-    <div class ="row">
-    <div class="input-field col s4" id = "paquete">
-        <i class="material-icons prefix">school</i>
-        <select>
-            <option value="">Seleccciona Paquete</option>
-            <option value="Paq1">Paquete 1</option>
-            <option value="Paq2">Paquete 2</option>
-            <option value="Paq3">Paquete 3</option>
-          </select>
-          <label>Seleccionar Paquete</label>
-      </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">perm_contact_calendar</i>
-        <input id= "DateBeg" placeholder="Fecha de Inicio (Curso)" type="text" class="datepicker">
-      </div>
-
-      <div class="input-field col s4">
-        <i class="material-icons prefix">perm_contact_calendar</i>
-        <input id= "DateEnd" placeholder="Fecha de Fin (Curso)" type="text" class="datepicker">
-      </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">add_circle</i>
-        <input id="idnumclases" type="number" min ="0" max = "100" class="validate">
-        <label for="idnumclases">Numero de Clases</label>
-      </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">attach_money</i>
-        <input id="idmontoventa" type="number" min ="0" max = "10000" class="validate">
-        <label for="idmontoventa">S/. Monto de Venta</label>
-      </div>
-
-      <div class="input-field col s4" >
-        <i class="material-icons prefix">attach_money</i>
-        <select id = "item-metpago">
-            <option value="">Metodo de Pago</option>
-            <option value="Paq1">Yape</option>
-            <option value="Paq2">Trasnferencia</option>
-            <option value="Paq3">Pago Facil</option>
-          </select>
-          <label>Seleccionar Paquete</label>
-      </div>
-      <form action="#">
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>File</span>
-            <input type="file">
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-          </div>
-        </div>
-      </form>
-    </div>
-      <div class ="row">
-      <div class="input-field col s4">
-        <a href="/" class="btn waves-effect waves-light" >Emitir
-          <i class="material-icons right">send</i>
+        <a href="./nuevotaller" class="btn waves-effect waves-light" >NUEVO TALLER
+          <i class="material-icons right">add</i>
         </a>
       </div>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <h3>Lista de Talleres</h3>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">textsms</i>
+        <input type="text" id="CbusqEmpRuc-input" class="autocomplete">
+        <label for="LbusqEmpRuc-input">Nombre Taller</label>
     </div>
+    <div class="input-field col s4">
+    <button class="btn waves-effect waves-light btnbuscar" id="btn-buscar-Lemp">buscar
+        <i class="material-icons right">search</i>
+    </button>
+    </div>
+
+      <div class = row ></div>  
+      <div class = row >
+      <div id ="app-table">
+         <div class="mb-3">
+             <table class="table table-hover">
+               <thead>
+                 <tr>
+                   <th scope="col">ID</th>
+                   <th scope="col">Nombre Comercial</th>
+                   <th scope="col">Nombre Interno</th>
+                   <th scope="col">Categoría</th>
+                   <th scope="col">Rango Edad</th>
+                   <th scope="col"></th>
+                 </tr>
+               </thead>
+               <tbody id = "CEmpResults">
+               </tbody>
+             </table>
+             <template id = "CEmprowTemplate">
+                 <tr class = "CEmpresult-box">
+                   <td class="class-CotID" scope ="row"></td>
+                   <td class ="class-CEmpDate"></td>
+                   <td class="class-CEmpN"></td>
+                   <td class ="class-CEmpNumNin"></td>
+                   <td class ="class-CEmpNumHor"></td>
+                   <td><a href="#meu-modal" class="btn waves-effect waves-light modal-trigger edit-botton">Edit</a></td>
+                 </tr>
+             </template>
+           </div>  
+         </div>
+      </div>  
+    
 
    </div>    
   </div> <!--close-->
