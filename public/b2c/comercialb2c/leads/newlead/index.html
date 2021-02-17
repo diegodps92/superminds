@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav class= "teal lighten-2" role="navigation" >
+          <div class="nav-wrapper container teal lighten-2">
+              <!-- Logo -->
+              <a href="#" class="brand-logo">Superminds</a>
+              <!-- Ícone para abrir no Mobile -->
+              <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                  <i class="material-icons">menu</i>
+              </a>
+
+              <ul id="navbar-items" class="right hide-on-med-and-down">
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="../">Regresar</a></li>
+                  <li><a href="./b2c">B2C</a></li>
+                  <li>
+                      <a class="dropdown-trigger" data-target="dropdown-menu" href="#">
+                          Funnel <i class="material-icons right">arrow_drop_down</i>
+                      </a>
+                  </li>
+              </ul>
+
+              <!-- Dropdown -->
+              <ul id="dropdown-menu" class="dropdown-content teal lighten-2">
+                  <li><a href="./b2b/cotizacion" class = "white-text">Cotización</a></li>
+                  <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+                  <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+
+  <!-- Menu Mobile -->
+  <ul id="mobile-navbar" class="sidenav teal lighten-2">
+      <li><a href="/" >Inicio</a></li>
+      <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+      <li><a href="./b2b/cotizacion"  class = "white-text" >Cotización</a></li>
+      <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+  </ul>
+
+<div class="container">
+      <h3>Ingresar Lead</h3>
+
+    <div class = row >
+
+      <div class="input-field col s4">
+          <i class="material-icons prefix">textsms</i>
+          <input type="text" id="LbusqEmpRuc-input" class="autocomplete">
+          <label for="LbusqEmpRuc-input">ID Lead</label>
+      </div>
+
+      <div class="input-field col offset-s4 s4">
+      <button class="btn waves-effect waves-light btnbuscar" id="btn-buscar-Lemp">buscar
+          <i class="material-icons right">search</i>
+      </button>
+      </div>
+
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
+          <input type="text" id="NombreApoderado-input" class="autocomplete" placeholder=".">
+          <label for="NombreApoderado-input">Nombre de Apoderado</label>
+      </div>      
+
+      <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="idApellidoApoderado" type="text" class="validate" name ='b'placeholder=".">
+          <label class="active" for="idApellidoApoderado"> Apellido del Apoderado</label>
+      </div>
+
+      <div class="input-field col s4">
+        <select class="browser-default" id = "item-fuente">
+          <option value="" disabled selected>Selecciona fuente de lead</option>
+        </select>
+      </div>  
+    </div>  
+    <div class="row">  
+      <div class="input-field col s4">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" id="NombreAlumno-input" class="autocomplete" placeholder=".">
+        <label for="NombreAlumno-input">Nombre de Alumno</label>
+      </div>      
+
+     <div class="input-field col s4">
+       <i class="material-icons prefix">account_circle</i>
+       <input id="idApellidoAlumno" type="text" class="validate" name ='b'placeholder=".">
+       <label class="active" for="idApellidoAlumno"> Apellido del Alumno</label>
+     </div>
+
+     <div class="input-field col s4">
+      <i class="material-icons prefix">account_circle</i>
+      <input id="idFechaNacimiento" type="text" class="validate" name ='b'placeholder=".">
+      <label class="active" for="idFechaNacimiento"> Fecha de Nacimiento Alumo </label>
+    </div>
+
+      <div class="input-field col s4">
+        <i class="material-icons prefix">phone</i>
+        <input id="idtelEmpC" type="tel" class="validate">
+        <label for="idtelEmpC">Telefono del Contacto</label>
+      </div>
+      <div class="input-field inline col s4">
+        <i class="material-icons prefix">email</i>
+        <input id="emailprincipal" type="email" class="validate">
+        <label for="emailprincipal">Email</label>
+        <span class="helper-text" data-error="wrong" data-success="right">ejemplo@example.com</span>
+      </div>
+
+      <div class="input-field inline col s4">
+        <i class="material-icons prefix">date</i>
+        <input id="fecharegistrolead" type="date" class="validate">
+        <label for="fecharegistrolead">Fecha de Registro </label> 
+      </div>
+    </div>
+
+    <DIV class="row">
+      <div class="input-field col s6">
+        <button class="btn waves-effect waves-light btnbuscar" id="btn-agregar-detcot">Agregar
+          <i class="material-icons right">add</i>
+        </button>
+      </div>
+
+      <div class="input-field col s6">
+        <button class="btn waves-effect waves-light btnbuscar" id="btn-crealead">crear lead
+          <i class="material-icons right">control_point</i>
+        </button>
+      </div>
+    </div>
+    </div>
+
+      <div id ="app-det-table">
+        <div class="mb-3">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id = "CDetEmpResults">
+              </tbody>
+            </table>
+            <template id = "CDetEmprowTemplate">
+                <tr class = "CDetEmpresult-box">
+                  <td class="class-DetLeadID" scope ="row"></td>
+                  <td class="class-DetLeadNom"></td>
+                  <td class="class-DetLeadTel"></td>
+                  <td class="class-DetLeadMail"></td>
+                  <td><button class="btn waves-effect waves-light del-but-detcot">
+                    <i class="material-icons right">delete</i></button></td>
+                </tr>
+            </template>
+          </div>  
+        </div>
+    
+  
+</div>    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./srcnewlead.js">
+
+    </script>
+  </body>
+</html>

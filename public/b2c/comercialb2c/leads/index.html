@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <link  rel="stylesheet" href = "./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+        <nav class= "teal lighten-2" role="navigation" >
+            <div class="nav-wrapper container teal lighten-2">
+                <!-- Logo -->
+                <a href="#" class="brand-logo">Superminds</a>
+                <!-- Ícone para abrir no Mobile -->
+                <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+
+                <ul id="navbar-items" class="right hide-on-med-and-down">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="../">Regresar</a></li>
+                    <li><a class="dropdown-trigger" data-target="dropdown-menu-b2c" href="#">B2C
+                        <i class="material-icons right">arrow_drop_down</i>
+                        </a></li>
+                </ul>
+
+                <!-- Dropdown b2b-->
+                <!-- Dropdown b2c-->
+                <ul id="dropdown-menu-b2c" class="dropdown-content teal lighten-2">
+                  <li><a href="../loadForm/" class = "white-text">Cotización</a></li>
+                  
+              </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Menu Mobile -->
+    <ul id="mobile-navbar" class="sidenav teal lighten-2">
+        <li><a href="/" >Inicio</a></li>
+        <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+        <li><a href="./b2b/cotizacion"  class = "white-text" >Cotización</a></li>
+        <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+    </ul>
+    <div class = "container">
+     <div class = row >
+        <h4 class = "texto" >Leads</h4>
+        <div class="input-field col s4 offset-s8">
+          <a href="./newlead" class="btn waves-effect waves-light btnbuscar" >Nuevo Lead
+          <i class="material-icons right">add</i>
+          </a>
+        </div>
+
+        <div class="input-field col s4">
+            <i class="material-icons prefix">textsms</i>
+            <input type="text" id="CbusqEmpRuc-input" class="autocomplete">
+            <label for="LbusqEmpRuc-input">ID</label>
+        </div>
+        <div class="input-field col s4">
+        <button class="btn waves-effect waves-light btnbuscar" id="btn-buscar-Lemp">buscar
+            <i class="material-icons right">search</i>
+        </button>
+        </div>
+     </div>
+
+     <div class = row ></div>  
+     <div class = row >
+     <div id ="app-table">
+        <div class="mb-3">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Nombre </th>
+                  <th scope="col">Apellido </th>
+                  <th scope="col">Telefono </th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Observación</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id = "CEmpResults">
+              </tbody>
+            </table>
+            <template id = "CEmprowTemplate">
+                <tr class = "CEmpresult-box">
+                  <td class="class-CotID" scope ="row"></td>
+                  <td class ="class-CEmpDate"></td>
+                  <td class="class-CEmpN"></td>
+                  <td class ="class-CEmpNumNin"></td>
+                  <td class ="class-CEmpNumHor"></td>
+                  <td><a href="#meu-modal" class="btn waves-effect waves-light modal-trigger edit-botton">Edit</a></td>
+                </tr>
+            </template>
+          </div>  
+        </div>
+     </div>  
+
+
+    <div id="meu-modal" class="modal"> <!-- bottom-sheet -->
+        <div class="modal-content">
+            <div class = row >
+              <div class="input-field col s1">
+                <input id="idQuote" disabled value="I am not editable"  type="text" class="validate" placeholder=" "> 
+                <label for="idQuote">ID</label>
+              </div>  
+                <div class="input-field col s3">
+                    <input id="idDateLead" disabled value="I am not editable" type="text" class="validate" placeholder=" "> 
+                    <label for="idDateQuote">fecha</label>
+                  </div>       
+                <div class="input-field col s4">
+                  <input id="idBRUCEmpL" disabled value="I am not editable" type="text" class="validate" placeholder=" "> 
+                  <label for="idBRUCEmpL">RUC</label>
+                </div> 
+
+                <div class="input-field col s4">
+                  <input id="idRazonSocialLead" disabled value="I am not editable" type="text" class="validate" placeholder=" "> 
+                  <label for="idRazonSocial">Razón Socual</label>
+                </div>    
+
+                <div class="input-field col s4">
+                  <input id="BNomContactEmpL" type="text" class="validate"  placeholder=" ">
+                  <label for="BNomContactEmpL">Nombres del Contacto</label>
+                </div>
+
+
+                <div class="input-field col s3">
+                  <select class="browser-default" id = "item-estado">
+                  <option value="" disabled selected>Estado</option>
+                  </select>
+                </div>
+              </div> 
+        </div>
+        <div class="modal-footer">
+          <button class="btn waves-effect waves-light" id="btn-editar-cot">Guardar
+            <i class="material-icons right">save</i>
+        </button>
+            <a href="#" class="modal-close btn waves-effect waves-light">Cerrar</a>
+        </div>
+        
+    </div>
+
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src = "./srcleadb2c.js">
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav class= "teal lighten-2" role="navigation" >
+          <div class="nav-wrapper container teal lighten-2">
+              <!-- Logo -->
+              <a href="#" class="brand-logo">Superminds</a>
+              <!-- Ícone para abrir no Mobile -->
+              <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                  <i class="material-icons">menu</i>
+              </a>
+
+              <ul id="navbar-items" class="right hide-on-med-and-down">
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="../">Regresar</a></li>
+                  <li><a href="./b2c">B2C</a></li>
+                  <li>
+                      <a class="dropdown-trigger" data-target="dropdown-menu" href="#">
+                          Funnel <i class="material-icons right">arrow_drop_down</i>
+                      </a>
+                  </li>
+              </ul>
+
+              <!-- Dropdown -->
+              <ul id="dropdown-menu" class="dropdown-content teal lighten-2">
+                  <li><a href="./b2b/cotizacion" class = "white-text">Cotización</a></li>
+                  <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+                  <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+
+  <!-- Menu Mobile -->
+  <ul id="mobile-navbar" class="sidenav teal lighten-2">
+      <li><a href="/" >Inicio</a></li>
+      <li><a href="./b2b/leads"  class = "white-text" >Leads</a></li>
+      <li><a href="./b2b/cotizacion"  class = "white-text" >Cotización</a></li>
+      <li><a href="./b2b/ventas"  class = "white-text" >Venta</a></li>
+  </ul>
+  <div class="container">
+    <div class="row">
+
+      <h2>Formulario Superbuddy</h2>
+
+    <div class = row >
+      <div class="input-field col s4">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="idLead" type="text" class="validate">
+        <label for="idLead">idlead</label>
+      </div>
+      
+      <div class="input-field col s4">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="idNombre" type="text" class="validate">
+        <label for="idNombre">Nombre</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="idApellido" type="text" class="validate">
+        <label for="idApellido">Apellido</label>
+      </div>
+    
+   
+      <div class="input-field col s6">
+        <select class="browser-default" id = "item-mes">
+           <option value="" disabled selected>Selecciona el Mes</option>
+        </select>
+       </div>
+
+        <div class="input-field col s6">
+        <select class="browser-default" id = "item-curso">
+            <option value="" disabled selected>Selecciona el curso</option>
+        </select>
+        </div>
+      
+      <div class="input-field col s6">
+        <select class="browser-default" id = "item-edad">
+            <option value="" disabled selected>Selecciona la edad</option>
+        </select>
+        </div>
+      
+      <div class="input-field col s6">
+       <select class="browser-default" id = "item-dia">
+          <option value="" disabled selected>Selecciona el dia</option>
+       </select>
+      </div>
+      
+      <div class="input-field col s6">
+       <select class="browser-default" id = "item-horario">
+          <option value="" disabled selected>Selecciona el horario</option>
+       </select>
+      </div>
+
+      <div class="input-field col s6">
+       <select class="browser-default" id = "item-Buddy">
+          <option value="" disabled selected>Selecciona el buddy</option>
+       </select>
+      </div>
+      <div class="input-field col s6">
+        <a href="#!" class="collection-item"><span class="badge" id ="item-niños">0</span>#Niños</a> 
+      </div>    
+    </div>
+      <div class="input-field col s3">
+        <button class="btn waves-effect waves-light" id="btn-agregar">Agregar
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+      <div class="input-field col s3">
+        <button class="btn waves-effect waves-light" id="btn-Comprar">Comprar
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+      <div class="input-field col s3">
+        <a href="./loadForm" class="btn waves-effect waves-light" >Emitir
+          <i class="material-icons right">send</i>
+        </a>
+      </div>
+      <div class="input-field col s3">
+        <a href="../" class="btn waves-effect waves-light" >Regresar
+          <i class="material-icons right">send</i>
+        </a>
+      </div>
+
+      <div class="mb-3">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Curso</th>
+              <th scope="col">Dia</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Buddy</th>
+            </tr>
+          </thead>
+          <tbody id = "ventaResults">
+          </tbody>
+        </table>
+        <template id = "vtarowTemplate">
+            <tr class = "vtaresult-box">
+              <th class="class-Name" scope ="row"></th>
+              <td class ="class-Curso"></td>
+              <td class ="class-Dia"></td>
+              <td class ="class-hora"></td>
+              <td class ="class-buddy"></td>
+            </tr>
+        </template>
+      </div>
+   </div>    
+  </div> <!--close-->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src = scvtas.js>
+   
+
+    </script>
+  </body>
+</html>
