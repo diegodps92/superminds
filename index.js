@@ -141,4 +141,19 @@ app.get('/api-getLeadEspecificacion', (request, response)=>{
     })
 })
 
+app.get('/api-getFuenteLeadB2C', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getFuenteLeadB2C(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
+app.post('/api-addnewleadb2c', (request, response)=>{ 
+    const data = request.body;
+    dboperations.addNewLeadB2C(data).then(result => {
+        console.log(data);
+       response.status(201).json(result[0]);
+    })
+})
+
 //

@@ -46,7 +46,7 @@ document.getElementById("btn-buscar-Lemp").addEventListener("click", async funct
     const datas2 = await responses2.json();
     const arrayOfValues2 = datas2.filter(function(r){return true;});
     const item2 = document.getElementById("item-programa");
-    const index2 = 'razoncontacto';
+    const index2 = 'programa';
     const nombre2 = 'el programa';
     addUniqueOptionsToDropDownList (item2, arrayOfValues2, index2, nombre2);
     const responses3 = await fetch('/api-getLeadEspecificacion');

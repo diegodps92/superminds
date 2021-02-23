@@ -16,51 +16,37 @@ var alldate = [];
 document.addEventListener('DOMContentLoaded',cotFirsStep());
 
 document.getElementById("btn-buscar-Lemp").addEventListener("click", async function(){
-    const custID = document.getElementById("LbusqEmpRuc-input").value.toString().trim();
-    const data = {custID};
-    const options = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-        };
-        //const response = await
-        const response = await fetch('/api-getEmpresasbyRUC', options);
-        const djson = await response.json();
-        djson.forEach(v => {
-            var sector=  v['sector'];
-            var razonsocial = v['razonSocial'];
-            document.getElementById("LbusqEmp-input").value = razonsocial;
-            document.getElementById("idRubroEmpL").value = sector;
-         });  
-  });
+  const custID = document.getElementById("LbusqEmpRuc-input").value.toString().trim();
+  const data = {custID};
+  const options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+      };
+      //const response = await
+      const response = await fetch('/api-getEmpresasbyRUC', options);
+      const djson = await response.json();
+      djson.forEach(v => {
+          var sector=  v['sector'];
+          var razonsocial = v['razonSocial'];
+          document.getElementById("LbusqEmp-input").value = razonsocial;
+          document.getElementById("idRubroEmpL").value = sector;
+       });  
+});
 
   async function  cotFirsStep (){    
-    const responses = await fetch('/api-getLeadFuente');
+    const responses = await fetch('/api-getFuenteLeadB2C');
     const datas = await responses.json();
     const arrayOfValues = datas.filter(function(r){return true;});
-    const item = document.getElementById("item-fuente");
-    const index = 'fuente';
+    const item = document.getElementById("item-fuenteleadb2c");
+    const index = 'NombreFuente';
     const nombre = 'la fuente';
     addUniqueOptionsToDropDownList (item, arrayOfValues, index, nombre);
-    const responses2 = await fetch('/api-getLeadPrograma');
-    const datas2 = await responses2.json();
-    const arrayOfValues2 = datas2.filter(function(r){return true;});
-    const item2 = document.getElementById("item-programa");
-    const index2 = 'razoncontacto';
-    const nombre2 = 'el programa';
-    addUniqueOptionsToDropDownList (item2, arrayOfValues2, index2, nombre2);
-    const responses3 = await fetch('/api-getLeadEspecificacion');
-    const datas3 = await responses3.json();
-    const arrayOfValues3 = datas3.filter(function(r){return true;});
-    const item3 = document.getElementById("item-especifico");
-    const index3 = 'especificacion';
-    const nombre3 = 'la especificación';
-    addUniqueOptionsToDropDownList (item3, arrayOfValues3, index3, nombre3);
 
     var selelems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(selelems);
     }
-    
+  
   function addUniqueOptionsToDropDownList (item, arrayofArrays, index, nombre) {       
     var currentlyAdded = [];
     item.innerHTML= '<option>Selecciona '+ nombre+'</option>';
@@ -72,44 +58,43 @@ document.getElementById("btn-buscar-Lemp").addEventListener("click", async funct
       item.appendChild(option);
       currentlyAdded.push(r[index]);
     }
-    });      
-}
+    });     
+} 
+
 
 document.getElementById("btn-crealead").addEventListener("click", async function(){
-    const ruc  =  document.getElementById("LbusqEmpRuc-input").value;
-    const razonsocial   =  document.getElementById("LbusqEmp-input").value;
-    const rubro   =  document.getElementById("idRubroEmpL").value;
-    const idrubro   =  "0";
-    const fuente   =  document.getElementById("item-fuente").value;
-    const nomcontacto   =  document.getElementById("NomContactEmpC").value;
-    const telcontacto   =  document.getElementById("idtelEmpC").value;
-    const cargo   =  document.getElementById("idCargo").value;
-    const programa = document.getElementById("item-programa").value;
-    const especifico = document.getElementById("item-especifico").value;
-    const data = {ruc, razonsocial, rubro,idrubro,fuente,nomcontacto,telcontacto, cargo, programa, especifico }
+    const mothernames   =  document.getElementById("NombreApoderado-input").value;
+    const parentSurName   =  document.getElementById("idApellidoApoderado").value;
+    const NombreFuente   =  document.getElementById("item-fuenteleadb2c").value;
+    const names   =  document.getElementById("NombreAlumno-input").value;
+    const surNameP   =  document.getElementById("idApellidoAlumno").value;
+    const edad   =  document.getElementById("idedad").value;
+    const parentCellphone   =  document.getElementById("idtelapoderado").value;
+    const parentcorreo   =  document.getElementById("emailprincipal").value;
+    const fecharegistro   =  document.getElementById("fecharegistrolead").value;
+    const data = {mothernames, parentSurName, NombreFuente,names,surNameP,edad,parentCellphone, parentcorreo, fecharegistro }
     console.log(data);
     const options = {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data) };
 
-   const response = await  fetch('/api-addnewlead', options);
+   const response = await  fetch('/api-addnewleadb2c', options);
    const json = await response.json();
    //await addDetailLead();
    //await limpieza();
    });
 
    function limpieza () {
-    document.getElementById("LbusqEmpRuc-input").value = "";
-    document.getElementById("LbusqEmp-input").value = ""; 
-    document.getElementById("idRubroEmpL").value = "";
-    document.getElementById("item-fuente").value = "";
-    document.getElementById("NomContactEmpC").value = "";
-    document.getElementById("idtelEmpC").value ="";
-    document.getElementById("idCargo").value = ""; 
-    document.getElementById("moreNomContactEmpC").value = "";
-    document.getElementById("moreidtelEmpC").value ="";
-    document.getElementById("moreemail_inline").value = ""; 
+    document.getElementById("NombreApoderado-input").value = "";
+    document.getElementById("idApellidoApoderado-input").value = ""; 
+    document.getElementById("item-fuenteleadb2c").value = "";
+    document.getElementById("NombreAlumno-input").value = "";
+    document.getElementById("idApellidoAlumno").value = "";
+    document.getElementById("idedad").value ="";
+    document.getElementById("idtelapoderado").value = ""; 
+    document.getElementById("emailprincipal").value = "";
+    document.getElementById("fecharegistrolead").value ="";
    }
 
  function addNewDetailLead(){  
@@ -187,3 +172,11 @@ document.getElementById("btn-crealead").addEventListener("click", async function
               }
           }
       }
+            
+
+ 
+
+
+
+
+      

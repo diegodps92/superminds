@@ -125,6 +125,7 @@ async function addQuote(data) {
             .input('entCompleteName', sql.NVarChar, data.entCompleteName)
             .input('telcontacto', sql.NVarChar, data.telcontacto)
             .input('programa',sql.NVarChar, data.programa)
+            .input('especificacion',sql.NVarChar, data.especificacion)
             .input('entContact', sql.NVarChar, data.entContact)
             .input('entTelContact', sql.Int, data.entTelContact)
             .input('quoteAmount', sql.Float, data.quoteAmount)
@@ -321,6 +322,42 @@ async function getLeadEspecificacion() {
     }
 }
 
+async function getFuenteLeadB2C() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT NombreFuente from dbo.Leadfuente");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function addNewLeadB2C(data) {
+
+    try {
+        let pool = await sql.connect(config);
+        let insertProduct = await pool.request()
+            .input('creationdate', sql.NVarChar, data.creationdate)
+            .input('mothernames', sql.NVarChar, data.mothernames)
+            .input('parentSurNameP', sql.NVarChar, data.parentSurNameP)
+            .input('NombreFuente', sql.NVarChar, data.NombreFuente)
+            .input('names', sql.NVarChar, data.names)
+            .input('surNameP', sql.NVarChar, data.surNameP)
+            .input('edad', sql.int, data.edad)
+            .input('parentCellphone', sql.int, data.parentCellphone)
+            .input('parentcorreo', sql.NVarChar, data.parentcorreo)
+            .input('fecharegistro', sql.datetime, data.fecharegistro)
+            .execute('personas.insertarleadsB2C');
+        return insertProduct.recordsets;
+        
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+}
+
 
 module.exports = {
     getCourses: getCourses,
@@ -341,5 +378,7 @@ module.exports = {
     getLeadFuente:getLeadFuente,
     addNewLeadB2B:addNewLeadB2B,
     getLeadPrograma:getLeadPrograma,
-    getLeadEspecificacion:getLeadEspecificacion
+    getLeadEspecificacion:getLeadEspecificacion,
+    getFuenteLeadB2C:getFuenteLeadB2C,
+    addNewLeadB2C:addNewLeadB2C
 }
