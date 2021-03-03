@@ -42,20 +42,28 @@ document.getElementById("btn-buscar-Lemp").addEventListener("click", async funct
     const index = 'fuente';
     const nombre = 'la fuente';
     addUniqueOptionsToDropDownList (item, arrayOfValues, index, nombre);
-    const responses2 = await fetch('/api-getLeadPrograma');
+    const responses2 = await fetch('/api-getLeadArea');
     const datas2 = await responses2.json();
     const arrayOfValues2 = datas2.filter(function(r){return true;});
-    const item2 = document.getElementById("item-programa");
-    const index2 = 'programa';
-    const nombre2 = 'el programa';
+    console.log(arrayOfValues2);
+    const item2 = document.getElementById("item-area");
+    const index2 = 'area';
+    const nombre2 = 'el area';
     addUniqueOptionsToDropDownList (item2, arrayOfValues2, index2, nombre2);
-    const responses3 = await fetch('/api-getLeadEspecificacion');
+    const responses3 = await fetch('/api-getLeadPrograma');
     const datas3 = await responses3.json();
     const arrayOfValues3 = datas3.filter(function(r){return true;});
-    const item3 = document.getElementById("item-especifico");
-    const index3 = 'especificacion';
-    const nombre3 = 'la especificación';
+    const item3 = document.getElementById("item-programa");
+    const index3 = 'programa';
+    const nombre3 = 'el programa';
     addUniqueOptionsToDropDownList (item3, arrayOfValues3, index3, nombre3);
+    const responses4 = await fetch('/api-getLeadEspecificacion');
+    const datas4 = await responses4.json();
+    const arrayOfValues4 = datas4.filter(function(r){return true;});
+    const item4 = document.getElementById("item-especifico");
+    const index4 = 'especificacion';
+    const nombre4 = 'la especificación';
+    addUniqueOptionsToDropDownList (item4, arrayOfValues4, index4, nombre4);
 
     var selelems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(selelems);
@@ -84,10 +92,10 @@ document.getElementById("btn-crealead").addEventListener("click", async function
     const nomcontacto   =  document.getElementById("NomContactEmpC").value;
     const telcontacto   =  document.getElementById("idtelEmpC").value;
     const cargo   =  document.getElementById("idCargo").value;
+    const area   =  document.getElementById("item-area").value;
     const programa = document.getElementById("item-programa").value;
     const especifico = document.getElementById("item-especifico").value;
-    const data = {ruc, razonsocial, rubro,idrubro,fuente,nomcontacto,telcontacto, cargo, programa, especifico }
-    console.log(data);
+    const data = {ruc, razonsocial, rubro,idrubro,fuente,nomcontacto,telcontacto,area, cargo, programa, especifico };
     const options = {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},

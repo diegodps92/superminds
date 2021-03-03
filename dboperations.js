@@ -286,6 +286,7 @@ async function addNewLeadB2B(data) {
             .input('rubro', sql.NVarChar, data.rubro)
             .input('fuente', sql.NVarChar, data.fuente)
             .input('cargo', sql.NVarChar, data.cargo)
+            .input('area', sql.NVarChar, data.area)
             .input('nomcontacto', sql.NVarChar, data.nomcontacto)
             .input('telcontacto', sql.NVarChar, data.telcontacto)
             .input('programa',sql.NVarChar, data.programa)
@@ -298,6 +299,17 @@ async function addNewLeadB2B(data) {
         console.log(err);
     }
 
+}
+
+async function getLeadArea() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("SELECT area from enterprise.areas");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 async function getLeadPrograma() {
@@ -378,6 +390,7 @@ module.exports = {
     getLeadFuente:getLeadFuente,
     addNewLeadB2B:addNewLeadB2B,
     getLeadPrograma:getLeadPrograma,
+    getLeadArea:getLeadArea,
     getLeadEspecificacion:getLeadEspecificacion,
     getFuenteLeadB2C:getFuenteLeadB2C,
     addNewLeadB2C:addNewLeadB2C

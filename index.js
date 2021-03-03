@@ -134,6 +134,13 @@ app.get('/api-getLeadPrograma', (request, response)=>{
     })
 })
 
+app.get('/api-getLeadArea', (request, response)=>{ 
+    const data = request.body;
+    dboperations.getLeadArea(data).then(result => {
+       response.status(201).json(result[0]);
+    })
+})
+
 app.get('/api-getLeadEspecificacion', (request, response)=>{ 
     const data = request.body;
     dboperations.getLeadEspecificacion(data).then(result => {
