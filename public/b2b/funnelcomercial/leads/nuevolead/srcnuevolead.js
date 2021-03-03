@@ -94,8 +94,8 @@ document.getElementById("btn-crealead").addEventListener("click", async function
     const cargo   =  document.getElementById("idCargo").value;
     const area   =  document.getElementById("item-area").value;
     const programa = document.getElementById("item-programa").value;
-    const especifico = document.getElementById("item-especifico").value;
-    const data = {ruc, razonsocial, rubro,idrubro,fuente,nomcontacto,telcontacto,area, cargo, programa, especifico };
+    const especificacion = document.getElementById("item-especifico").value;
+    const data = {ruc, razonsocial, rubro,idrubro,fuente,nomcontacto,telcontacto,area, cargo, programa, especificacion };
     const options = {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
