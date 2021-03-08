@@ -120,14 +120,12 @@ async function addQuote(data) {
     try {
         let pool = await sql.connect(config);
         let insertProduct = await pool.request()
-            .input('dateQuote', sql.NVarChar, data.dateQuote)
             .input('entRUC', sql.NVarChar, data.entRUC)
+            .input('dateQuote', sql.NVarChar, data.dateQuote)
             .input('entCompleteName', sql.NVarChar, data.entCompleteName)
-            .input('telcontacto', sql.NVarChar, data.telcontacto)
-            .input('programa',sql.NVarChar, data.programa)
-            .input('especificacion',sql.NVarChar, data.especificacion)
+            //.input('telcontacto', sql.NVarChar, data.telcontacto)
             .input('entContact', sql.NVarChar, data.entContact)
-            .input('entTelContact', sql.Int, data.entTelContact)
+            .input('entTelContact', sql.NVarChar, data.entTelContact)
             .input('quoteAmount', sql.Float, data.quoteAmount)
             .input('numChild', sql.Int, data.numChild)
             .input('numHour', sql.Float, data.numHour)
@@ -138,11 +136,14 @@ async function addQuote(data) {
             .input('costKydemy', sql.Float, data.costKydemy )
             .input('numModerador', sql.Int, data.numModerador)
             .input('costPerModerador', sql.Float, data.costPerModerador )
-            .input('otherCost', sql.Int, data.otherCost)
+            .input('otherCost', sql.Float, data.otherCost)
             .input('totalCost', sql.Float, data.totalCost )
             .input('BeginigDate', sql.NVarChar, data.BeginigDate)
             .input('FinishDate', sql.NVarChar, data.FinishDate)
             .input('IDdetail', sql.Int, data.IDdetail)
+            .input('programa', sql.NVarChar, data.programa)
+            .input('especificacion', sql.NVarChar, data.especificacion)
+            .input('area', sql.NVarChar, data.area)
             .execute('enterprise.insertRegistrocotizacion');
         return insertProduct.recordsets;
         

@@ -59,19 +59,26 @@ function addUniqueOptionsToDropDownList (item, arrayofArrays, index, nombre) {
 }
 
 async function  cotFirsStep (){    
-    const responses2 = await fetch('/api-getLeadPrograma');
+    const responses = await fetch('/api-getLeadPrograma');
+    const datas = await responses.json();
+    const arrayOfValues = datas.filter(function(r){return true;});
+    const item = document.getElementById("item-programa");
+    const index = 'programa';
+    const nombre = 'el programa';
+    addUniqueOptionsToDropDownList (item, arrayOfValues, index, nombre);
+    const responses2 = await fetch('/api-getLeadEspecificacion');
     const datas2 = await responses2.json();
     const arrayOfValues2 = datas2.filter(function(r){return true;});
-    const item2 = document.getElementById("item-programa");
-    const index2 = 'razoncontacto';
-    const nombre2 = 'el programa';
+    const item2 = document.getElementById("item-especifico");
+    const index2 = 'especificacion';
+    const nombre2 = 'la especificación';
     addUniqueOptionsToDropDownList (item2, arrayOfValues2, index2, nombre2);
-    const responses3 = await fetch('/api-getLeadEspecificacion');
+    const responses3 = await fetch('/api-getLeadArea');
     const datas3 = await responses3.json();
     const arrayOfValues3 = datas3.filter(function(r){return true;});
-    const item3 = document.getElementById("item-especifico");
-    const index3 = 'especificacion';
-    const nombre3 = 'la especificación';
+    const item3 = document.getElementById("item-area");
+    const index3 = 'area';
+    const nombre3 = 'el área';
     addUniqueOptionsToDropDownList (item3, arrayOfValues3, index3, nombre3);
 
     var selelems = document.querySelectorAll('select');
@@ -216,7 +223,8 @@ function checkRequired(inputArr){
    const entContact =  document.getElementById("NomContactEmpC").value;
    const entTelContact =  Number(document.getElementById("idtelEmpC").value);
    const programa = document.getElementById("item-programa").value;
-   const especifico = document.getElementById("item-especifico").value;
+   const especificacion = document.getElementById("item-especifico").value;
+   const area = document.getElementById("item-area").value;
    const quoteAmount  =  Number(document.getElementById("idmontoventaEmp").value);
    const numChild  =  Number(document.getElementById("NumNinEmpC").value); 
    const numHour  =  Number(document.getElementById("NumHorEmpC").value);
@@ -255,7 +263,10 @@ function checkRequired(inputArr){
     totalCost, 
     BeginigDate,
     FinishDate,
-    IDdetail}
+    IDdetail,
+    programa,
+    especificacion,
+    area}
    const options = {
    method: 'POST',
    headers: {'Content-Type': 'application/json'},
