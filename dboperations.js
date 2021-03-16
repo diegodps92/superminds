@@ -248,6 +248,17 @@ async function getQuotes() {
     }
 }
 
+async function getLeads() {
+    try {
+        let pool = await sql.connect(config);
+        let products = await pool.request().query("select top 20 idlead, format(creationdate,'dd-MM-yy') as creationdate, razonsocial, '' as estado, '' as especificacion from enterprise.leads;");
+        return products.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 async function getDetailQuote(data) {
     try {
         let pool = await sql.connect(config);
@@ -382,6 +393,7 @@ module.exports = {
     getEmpresas: getEmpresas,
     addQuote: addQuote,
     getQuotes:getQuotes,
+    getLeads:getLeads,
     getDetailQuote:getDetailQuote,
     getDetailQuotesbyRuc:getDetailQuotesbyRuc,
     addDetailQuote:addDetailQuote,

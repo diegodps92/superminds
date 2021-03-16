@@ -77,6 +77,11 @@ app.get('/api-obt-cot-total', (request, response)=>{
      })
 })
 
+app.get('/api-obt-lead', (request, response)=>{ 
+    dboperations.getLeads().then(result => {
+        response.json(result[0]);
+     })
+})
 
 app.post('/api-obt-det-cot', (request, response)=>{ 
     const datas = request.body;
